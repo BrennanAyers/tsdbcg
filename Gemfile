@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  gem 'action-cable-testing'
 end
 
 group :development do
