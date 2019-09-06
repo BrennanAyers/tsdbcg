@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Game State Channel" do
+describe GameChannel do
   setup do
     @game = create(:game)
     player = create(:player, game_id: @game.id)
@@ -14,5 +14,11 @@ describe "Game State Channel" do
   it "sends a successful response" do
     subscribe
     expect(subscription).to be_confirmed
+  end
+
+  it "Renders Game State" do
+    subscribe
+    perform :render_game_state
+    expect(transmissions.first[:test]).to eq("test")
   end
 end
