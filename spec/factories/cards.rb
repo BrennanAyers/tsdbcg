@@ -5,44 +5,44 @@ FactoryBot.define do
 
   factory :gold, parent: :card do
     name { "Gold" }
-    type { "Money" }
+    category { "Money" }
     cost { 6 }
-    victoryPoints { nil }
-    spendingPower { 3 }
+    victory_points { nil }
+    spending_power { 3 }
   end
   factory :silver, parent: :card do
     name { "Silver" }
-    type { "Money" }
+    category { "Money" }
     cost { 3 }
-    victoryPoints { nil }
-    spendingPower { 2 }
+    victory_points { nil }
+    spending_power { 2 }
   end
   factory :copper, parent: :card do
     name { "Copper" }
-    type { "Money" }
+    category { "Money" }
     cost { 0 }
-    victoryPoints { nil }
-    spendingPower { 1 }
+    victory_points { nil }
+    spending_power { 1 }
   end
   factory :estate, parent: :card do
     name { "Estate" }
-    type { "Victory" }
+    category { "Victory" }
     cost { 2 }
-    victoryPoints { 1 }
-    spendingPower { 0 }
+    victory_points { 1 }
+    spending_power { 0 }
   end
   factory :duchy, parent: :card do
     name { "Duchy" }
-    type { "Victory" }
+    category { "Victory" }
     cost { 5 }
-    victoryPoints { 3 }
-    spendingPower { 0 }
+    victory_points { 3 }
+    spending_power { 0 }
   end
   factory :province, parent: :card do
     name { "Province" }
-    type { "Victory" }
+    category { "Victory" }
     cost { 8 }
-    victoryPoints { 6 }
-    spendingPower { 0 }
+    victory_points { 6 }
+    spending_power { 0 }
   end
 end

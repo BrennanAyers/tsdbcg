@@ -4,10 +4,10 @@ describe GameChannel do
   setup do
     @game = create(:game)
     player = create(:player, game_id: @game.id)
-    gold = create_list(:gold, 30)
-    estates = create_list(:estate, 8)
-    @game.cards += gold
-    @game.cards += estates
+    gold = create(:gold)
+    estate = create(:estate)
+    create_list(:game_card, 30, game_id: @game.id, card_id: gold.id)
+    create_list(:game_card, 8, game_id: @game.id, card_id: estate.id)
     stub_connection player: player
   end
 
@@ -18,24 +18,24 @@ describe GameChannel do
 
   it "Renders Game State" do
     subscribe
-    perform :render_game_state
-    expect(transmissions.first).to eq([{
-        id: 1515,
-        name: "Gold",
-        type: ["Treasure"],
-        cost: 6,
-        image: "Gold.jpg",
-        spendingPower: 3,
-        countAvalible: 30
+    perform :render_game_state, game_id: @game.id
+    expect((transmissions.first)).to eq([{
+        "name" => "Gold",
+        "category" => "Money",
+        "cost" => 6,
+        # image => "Gold.jpg",
+        "victoryPoints" => nil,
+        "spendingPower" => 3,
+        "countAvailable" => 30
       },
       {
-        id: 6123,
-        name: "Estate",
-        type: ["Victory"],
-        cost: 2,
-        image: "Estate.jpg",
-        victoryPoints: 1,
-        countAvalible: 8
+        "name" => "Estate",
+        "category" => "Victory",
+        "cost" => 2,
+        # image => "Estate.jpg",
+        "victoryPoints" => 1,
+        "spendingPower" => 0,
+        "countAvailable" => 8
       }])
   end
 end
