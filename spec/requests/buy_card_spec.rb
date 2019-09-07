@@ -11,22 +11,28 @@ describe 'Buy Card API' do
   end
 
   it 'sends a list of things' do
+    headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
     json_payload = {
-      player_id: @player.id,
-      bought: {
-        "Gold": 1,
-        "Estate": 1
+      buy_info: {
+        player_id: @player.id,
+        bought: {
+          "Gold": 1,
+          "Estate": 1
+        }
       }
     }
-    post "/api/v1/games/#{@game.id}/buy_card", params: json_payload.to_json
+    post "/api/v1/games/#{@game.id}/buy_card", headers: headers, params: json_payload.to_json
 
     expect(response).to be_successful
 
     expected_response = {
-      player_name: @player.name,
-      bought: {
-        "Gold": 1,
-        "Estate": 1
+      "player_name" => @player.name,
+      "bought" => {
+        "Gold" => 1,
+        "Estate" => 1
       }
     }
 
