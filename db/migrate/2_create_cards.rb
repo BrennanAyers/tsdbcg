@@ -4,8 +4,8 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :type
       t.integer :cost
-      t.integer :victoryPoints
-      t.integer :spendingPower
+      t.integer :victory_points
+      t.integer :spending_power
 
       t.timestamps
     end

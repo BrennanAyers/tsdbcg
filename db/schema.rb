@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 4) do
     t.string "name"
     t.string "type"
     t.integer "cost"
-    t.integer "victoryPoints"
-    t.integer "spendingPower"
+    t.integer "victory_points"
+    t.integer "spending_power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
