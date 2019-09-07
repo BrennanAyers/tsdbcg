@@ -16,8 +16,8 @@ describe 'Player State API' do
 
     data = JSON.parse(response.body)
 
-    expect(data[:playerId]).to eq(@player.id)
-    expect((data[:deck]).count).to eq(10)
-    expect((data[:discard]).count).to eq(0)
+    expect(data["playerId"]).to eq(@player.id)
+    expect((data["deck"]).count).to eq(10)
+    expect((data["discard"]).count).to eq(0)
   end
 end
