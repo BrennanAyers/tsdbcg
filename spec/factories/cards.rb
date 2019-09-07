@@ -4,7 +4,7 @@ FactoryBot.define do
 
   factory :gold, parent: :card do
     name { "Gold" }
-    type { "Money" }
+    category { "Money" }
     cost { 6 }
     victory_points { nil }
     spending_power { 3 }
@@ -12,7 +12,7 @@ FactoryBot.define do
 
   factory :silver, parent: :card do
     name { "Silver" }
-    type { "Money" }
+    category { "Money" }
     cost { 3 }
     victory_points { nil }
     spending_power { 2 }
@@ -20,7 +20,7 @@ FactoryBot.define do
 
   factory :copper, parent: :card do
     name { "Copper" }
-    type { "Money" }
+    category { "Money" }
     cost { 0 }
     victory_points { nil }
     spending_power { 1 }
@@ -28,7 +28,7 @@ FactoryBot.define do
 
   factory :estate, parent: :card do
     name { "Estate" }
-    type { "Victory" }
+    category { "Victory" }
     cost { 2 }
     victory_points { 1 }
     spending_power { 0 }
@@ -36,7 +36,7 @@ FactoryBot.define do
 
   factory :duchy, parent: :card do
     name { "Duchy" }
-    type { "Victory" }
+    category { "Victory" }
     cost { 5 }
     victory_points { 3 }
     spending_power { 0 }
@@ -44,7 +44,7 @@ FactoryBot.define do
 
   factory :province, parent: :card do
     name { "Province" }
-    type { "Victory" }
+    category { "Victory" }
     cost { 8 }
     victory_points { 6 }
     spending_power { 0 }
