@@ -2,7 +2,7 @@ class Player < ApplicationRecord
   belongs_to :game
 
   def cards
-    GameCard.where(player_id: id)
+    GameCard.where(player_id: id).joins(:card)
   end
 
   def buy(card_name)
