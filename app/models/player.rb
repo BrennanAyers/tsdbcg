@@ -9,4 +9,12 @@ class Player < ApplicationRecord
     game_card = GameCard.joins(:card).where('cards.name': card_name, player_id: nil, game_id: game.id).first
     game_card.update(player_id: id, discarded: true)
   end
+
+  def deck
+    cards.where(discarded: false)
+  end
+
+  def discard
+    cards.where(discarded: true)
+  end
 end
