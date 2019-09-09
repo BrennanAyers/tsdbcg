@@ -1,10 +1,13 @@
 require 'rails_helper'
 
-describe 'Buy Card API' do
+describe 'End turn API' do
+  #extra games to ensure we pull from right game
   before :each do
-    @game = create(:game)
+    @game, @g2 = create_list(:game, 2)
     @player = create(:player, game_id: @game.id)
+    @player2 = create(:player, game_id: @g2.id)
     @game.players << @player
+    @g2.players << @player2
     @copper = create(:copper)
     @estate = create(:estate)
     @game.start
@@ -36,18 +39,18 @@ describe 'Buy Card API' do
     expect(gc2.player_id).to eq(@player.id)
     expect(gc3.player_id).to eq(@player.id)
 
-    # Sets discarded true and updates position
-    [pc4, pc5, gc2, gc3, pc10, pc9, pc6, gc1].map(&:reload)
-    [pc4, pc5, gc2, gc3, pc10, pc9, pc6, gc1].each_with_index do | game_card, i|
-      expect(game_card.discarded).to eq(true)
-      expect(game_card.index).to eq(i)
-    end
-
     # Sets discarded false and updates position
     [pc1, pc2, pc3, pc7, pc8].map(&:reload)
     [pc1, pc2, pc3, pc7, pc8].each_with_index do | game_card, i|
       expect(game_card.discarded).to eq(false)
-      expect(game_card.index).to eq(i)
+      expect(game_card.deck_index).to eq(i + 1)
+    end
+
+    # Sets discarded true and updates position
+    [pc4, pc5, gc2, gc3, pc10, pc9, pc6, gc1].map(&:reload)
+    [pc4, pc5, gc2, gc3, pc10, pc9, pc6, gc1].each_with_index do | game_card, i|
+      expect(game_card.discarded).to eq(true)
+      expect(game_card.deck_index).to eq(i + 1)
     end
   end
 end
