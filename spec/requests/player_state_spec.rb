@@ -6,10 +6,10 @@ describe 'Player State API' do
     @player = create(:player, game_id: @game.id)
     @gold = create(:copper)
     @estate = create(:estate)
-    @game.start
   end
 
   it 'sends the players current deck and discard' do
+    @game.start
     get "/api/v1/games/#{@game.id}/players/#{@player.id}"
 
     expect(response).to be_successful
@@ -34,5 +34,31 @@ describe 'Player State API' do
     expect(data['deck'].last).to have_key('victoryPoints')
     expect(data['deck'].last).to have_key('image')
     expect(data['deck'].last).to have_key('id')
+  end
+
+  it 'sends the players current deck in draw order' do
+    srand 12345
+    @game.start
+    get "/api/v1/games/#{@game.id}/players/#{@player.id}"
+
+    expect(response).to be_successful
+
+    data = JSON.parse(response.body)
+
+    card_name_expectations = [
+      @estate.name,
+      @gold.name,
+      @gold.name,
+      @gold.name,
+      @gold.name,
+      @gold.name,
+      @gold.name,
+      @estate.name,
+      @gold.name,
+      @estate.name
+    ]
+    data['deck'].each_with_index do |card, index|
+      expect(card['name']).to eq(card_name_expectations[index])
+    end
   end
 end
