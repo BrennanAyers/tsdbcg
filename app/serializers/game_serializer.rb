@@ -4,14 +4,21 @@ class GameSerializer
   end
 
   def state
-    card_arr = @game.cards.distinct.select("id","name","category","cost","victory_points","spending_power").map do |card|
+    card_arr = @game.cards.distinct.map do |card|
       {
         name: card.name,
-        category: card.category,
+        category: card.category.split(','),
         cost: card.cost,
         victoryPoints: card.victory_points,
         spendingPower: card.spending_power,
-        countAvailable: @game.game_cards.where(card_id: card.id, player_id: nil).count
+        buyingPower: card.buying_power,
+        actionsProvided: card.spending_power,
+        cardsToDraw: card.cards_to_draw,
+        image: card.image,
+        desc: card.desc,
+        tags: card.tags.split(','),
+        countAvailable: @game.game_cards.where(card_id: card.id, player_id: nil).count,
+        id_list: card.fetch_card_ids
       }
     end
     players = @game.player_order
@@ -25,9 +32,9 @@ class GameSerializer
       }
     end
     return {
-      game_cards: card_arr,
-      player_order: player_names,
-      player_info: player_info_hash
+      tableDeck: card_arr,
+      playerOrder: player_names,
+      playerInfo: player_info_hash
     }
   end
 end
