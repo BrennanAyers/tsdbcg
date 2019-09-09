@@ -3,6 +3,11 @@ class Api::V1::GamesController < ApplicationController
     # require "pry"; binding.pry
     game = Game.find(params["gameId"])
     player = Game.find(params["playerId"])
+    (params["bought"]).each do |id|
+      # require "pry"; binding.pry
+      GameCard.where(id: id).update(player_id: params["playerId"])
+    end
+
     # "gameId"=>5, "playerId"=>5, "controller"=>"api/v1/games", "action"=>"update", "game"=>{}} permitted: false>
     # player = Player.find(buy_params[:player_id])
     # if game.id == player.game.id

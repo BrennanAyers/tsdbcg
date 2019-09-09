@@ -34,10 +34,26 @@ describe 'Buy Card API' do
       }
 
     post "/api/v1/endturn", headers: headers, params: json_payload.to_json
-#Assigns bought cards to player
+
     expect(response).to be_successful
+    #Assigns bought cards to player
+    [gc1,gc2,gc3].map(&:reload)
     expect(gc1.player_id).to eq(@player.id)
     expect(gc2.player_id).to eq(@player.id)
     expect(gc3.player_id).to eq(@player.id)
+
+    # Sets discarded true and updates position
+    [pc4, pc5, gc2, gc3, pc10, pc9, pc6, gc1].map(&:reload)
+    [pc4, pc5, gc2, gc3, pc10, pc9, pc6, gc1].each_with_index do | game_card, i|
+      expect(game_card.discarded).to eq(true)
+      expect(game_card.index).to eq(i)
+    end
+
+    # Sets discarded false and updates position
+    [pc1, pc2, pc3, pc7, pc8].map(&:reload)
+    [pc1, pc2, pc3, pc7, pc8].each_with_index do | game_card, i|
+      expect(game_card.discarded).to eq(false)
+      expect(game_card.index).to eq(i)
+    end
   end
 end
