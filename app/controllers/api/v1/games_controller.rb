@@ -6,5 +6,4 @@ class Api::V1::GamesController < ApplicationController
     player.reorder_deck(params['deck'])
     player.reorder_discard(params['discard'])
   end
-
 end
