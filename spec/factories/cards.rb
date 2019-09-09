@@ -8,6 +8,12 @@ FactoryBot.define do
     cost { 6 }
     victory_points { nil }
     spending_power { 3 }
+    buying_power { 0 }
+    actions_provided { 0 }
+    cards_to_draw { 0 }
+    image { "./gold.jpg" }
+    desc { nil }
+    tags { nil }
   end
 
   factory :silver, parent: :card do
@@ -16,6 +22,12 @@ FactoryBot.define do
     cost { 3 }
     victory_points { nil }
     spending_power { 2 }
+    buying_power { 0 }
+    actions_provided { 0 }
+    cards_to_draw { 0 }
+    image { "./silver.jpg" }
+    desc { nil }
+    tags { nil }
   end
 
   factory :copper, parent: :card do
@@ -24,6 +36,12 @@ FactoryBot.define do
     cost { 0 }
     victory_points { nil }
     spending_power { 1 }
+    buying_power { 0 }
+    actions_provided { 0 }
+    cards_to_draw { 0 }
+    image { "./copper.jpg" }
+    desc { nil }
+    tags { nil }
   end
 
   factory :estate, parent: :card do
@@ -32,6 +50,12 @@ FactoryBot.define do
     cost { 2 }
     victory_points { 1 }
     spending_power { nil }
+    buying_power { 0 }
+    actions_provided { 0 }
+    cards_to_draw { 0 }
+    image { "./estate.jpg" }
+    desc { nil }
+    tags { nil }
   end
 
   factory :duchy, parent: :card do
@@ -40,6 +64,12 @@ FactoryBot.define do
     cost { 5 }
     victory_points { 3 }
     spending_power { nil }
+    buying_power { 0 }
+    actions_provided { 0 }
+    cards_to_draw { 0 }
+    image { "./duchy.jpg" }
+    desc { nil }
+    tags { nil }
   end
 
   factory :province, parent: :card do
@@ -48,5 +78,11 @@ FactoryBot.define do
     cost { 8 }
     victory_points { 6 }
     spending_power { nil }
+    buying_power { 0 }
+    actions_provided { 0 }
+    cards_to_draw { 0 }
+    image { "./province.jpg" }
+    desc { nil }
+    tags { nil }
   end
 end
