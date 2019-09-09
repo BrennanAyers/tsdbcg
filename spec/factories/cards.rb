@@ -31,7 +31,7 @@ FactoryBot.define do
     category { "Victory" }
     cost { 2 }
     victory_points { 1 }
-    spending_power { 0 }
+    spending_power { nil }
   end
 
   factory :duchy, parent: :card do
@@ -39,7 +39,7 @@ FactoryBot.define do
     category { "Victory" }
     cost { 5 }
     victory_points { 3 }
-    spending_power { 0 }
+    spending_power { nil }
   end
 
   factory :province, parent: :card do
@@ -47,6 +47,6 @@ FactoryBot.define do
     category { "Victory" }
     cost { 8 }
     victory_points { 6 }
-    spending_power { 0 }
+    spending_power { nil }
   end
 end

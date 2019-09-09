@@ -24,7 +24,7 @@ describe 'Game State API' do
       "category" => "Victory",
       "cost" => 2,
       "victoryPoints" => 1,
-      "spendingPower" => 0,
+      "spendingPower" => nil,
       "countAvailable" => 8
     }])
   end

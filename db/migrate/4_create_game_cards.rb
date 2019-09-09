@@ -4,8 +4,8 @@ class CreateGameCards < ActiveRecord::Migration[5.2]
       t.references :game, foreign_key: true
       t.references :card, foreign_key: true
       t.bigint :player_id
-      t.boolean :trashed
-      t.boolean :discarded
+      t.boolean :trashed, default: false
+      t.boolean :discarded, default: false
 
       t.timestamps
     end
