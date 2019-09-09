@@ -17,4 +17,10 @@ class Player < ApplicationRecord
   def discard
     cards.where(discarded: true)
   end
+
+  def reorder_deck(new_order)
+    new_order.each_with_index do |id, index|
+      cards.find(id).update(discarded: false, deck_index: index + 1)
+    end
+  end
 end
