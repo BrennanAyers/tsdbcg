@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'game_state/:id', to: 'game_state#index'
 
-      post 'games/:id/buy_card', to: 'games#update'
+      post 'endturn', to: 'games#update'
 
       get 'games/:game_id/players/:player_id', to: 'players#show'
     end
