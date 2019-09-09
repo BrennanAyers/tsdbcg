@@ -37,6 +37,7 @@ describe 'Player State API' do
   end
 
   it 'sends the players current deck in draw order' do
+    # Set Stable random seed for deck index generation
     srand 12345
     @game.start
     get "/api/v1/games/#{@game.id}/players/#{@player.id}"
