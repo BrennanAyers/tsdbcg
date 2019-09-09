@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 4) do
     t.bigint "game_id"
     t.bigint "card_id"
     t.bigint "player_id"
-    t.boolean "trashed"
-    t.boolean "discarded"
+    t.boolean "trashed", default: false
+    t.boolean "discarded", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_game_cards_on_card_id"

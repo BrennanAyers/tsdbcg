@@ -2,7 +2,7 @@ class Player < ApplicationRecord
   belongs_to :game
 
   def cards
-    GameCard.where("player_id": id)
+    GameCard.where(player_id: id).joins(:card)
   end
 
   def buy(card_name)
@@ -24,5 +24,13 @@ class Player < ApplicationRecord
   def fetch_hand_size
     #todo - Include way to modify this on militia hit
     return 5
+  end
+  
+  def deck
+    cards.where(discarded: false)
+  end
+
+  def discard
+    cards.where(discarded: true)
   end
 end

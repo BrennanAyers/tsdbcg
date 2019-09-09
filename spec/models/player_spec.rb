@@ -26,5 +26,19 @@ RSpec.describe Player, type: :model do
       expect(@player.cards.first.card.name).to eq(@gold.name)
       expect(@game.game_cards.joins(:card).where('cards.name': @gold.name, player_id: nil).length).to eq(29)
     end
+
+    it '#deck' do
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(5).update(player_id: @player.id)
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(2).update(player_id: @player.id)
+      expect(@player.deck.length).to eq(7)
+    end
+
+    it '#discard' do
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(5).update(player_id: @player.id)
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(2).update(player_id: @player.id)
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(3).update(discarded: true)
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(1).update(discarded: true)
+      expect(@player.discard.length).to eq(4)
+    end
   end
 end
