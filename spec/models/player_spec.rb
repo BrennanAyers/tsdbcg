@@ -50,8 +50,8 @@ RSpec.describe Player, type: :model do
     it '#discard' do
       GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(5).update(player_id: @player.id)
       GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(2).update(player_id: @player.id)
-      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(3).update(discarded: true)
-      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(1).update(discarded: true)
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(3).update(discarded: true, player_id: @player.id)
+      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(1).update(discarded: true, player_id: @player.id)
       expect(@player.discard.length).to eq(4)
     end
   end
