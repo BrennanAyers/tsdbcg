@@ -11,7 +11,7 @@ class Player < ApplicationRecord
   end
 
   def deck
-    cards.where(discarded: false)
+    cards.where(discarded: false).order(:deck_index)
   end
 
   def discard
