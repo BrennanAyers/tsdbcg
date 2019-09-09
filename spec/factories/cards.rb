@@ -12,8 +12,8 @@ FactoryBot.define do
     actions_provided { 0 }
     cards_to_draw { 0 }
     image { "./gold.jpg" }
-    desc { nil }
-    tags { nil }
+    desc { "" }
+    tags { "" }
   end
 
   factory :silver, parent: :card do
@@ -26,8 +26,8 @@ FactoryBot.define do
     actions_provided { 0 }
     cards_to_draw { 0 }
     image { "./silver.jpg" }
-    desc { nil }
-    tags { nil }
+    desc { "" }
+    tags { "" }
   end
 
   factory :copper, parent: :card do
@@ -40,8 +40,8 @@ FactoryBot.define do
     actions_provided { 0 }
     cards_to_draw { 0 }
     image { "./copper.jpg" }
-    desc { nil }
-    tags { nil }
+    desc { "" }
+    tags { "" }
   end
 
   factory :estate, parent: :card do
@@ -54,8 +54,8 @@ FactoryBot.define do
     actions_provided { 0 }
     cards_to_draw { 0 }
     image { "./estate.jpg" }
-    desc { nil }
-    tags { nil }
+    desc { "" }
+    tags { "" }
   end
 
   factory :duchy, parent: :card do
@@ -68,8 +68,8 @@ FactoryBot.define do
     actions_provided { 0 }
     cards_to_draw { 0 }
     image { "./duchy.jpg" }
-    desc { nil }
-    tags { nil }
+    desc { "" }
+    tags { "" }
   end
 
   factory :province, parent: :card do
@@ -82,7 +82,7 @@ FactoryBot.define do
     actions_provided { 0 }
     cards_to_draw { 0 }
     image { "./province.jpg" }
-    desc { nil }
-    tags { nil }
+    desc { "" }
+    tags { "" }
   end
 end
