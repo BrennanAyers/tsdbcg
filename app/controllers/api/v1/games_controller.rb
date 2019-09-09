@@ -5,8 +5,6 @@ class Api::V1::GamesController < ApplicationController
     GameCard.where(id: params['bought'], game_id: game_id).update(player_id: player.id)
     player.reorder_deck(params['deck'])
     player.reorder_discard(params['discard'])
-
-
   end
 
 end
