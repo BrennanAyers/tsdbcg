@@ -28,9 +28,23 @@ RSpec.describe Player, type: :model do
     end
 
     it '#deck' do
-      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @gold.name).limit(5).update(player_id: @player.id)
-      GameCard.joins(:card).where(game_id: @game.id, 'cards.name': @estate.name).limit(2).update(player_id: @player.id)
+      deck_indexes = [1, 3, 7, 4, 5, 2, 6]
+      GameCard.joins(:card)
+      .where(game_id: @game.id, 'cards.name': @gold.name)
+      .limit(5)
+      .each do |card|
+        card.update(player_id: @player.id, deck_index: deck_indexes.pop)
+      end
+      GameCard.joins(:card)
+      .where(game_id: @game.id, 'cards.name': @estate.name)
+      .limit(2)
+      .each do |card|
+        card.update(player_id: @player.id, deck_index: deck_indexes.pop)
+      end
       expect(@player.deck.length).to eq(7)
+      @player.deck.each_with_index do |card, index|
+        expect(card.deck_index).to eq(index + 1)
+      end
     end
 
     it '#discard' do
