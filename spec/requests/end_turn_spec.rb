@@ -10,17 +10,11 @@ describe 'Buy Card API' do
     @game.start
   end
 
-
-# deck: [ ordered array cards ids],
-# bought: [array ids ]
-# discard: [ordered array card ids]
-
   it 'sends a list of things' do
     gc1 = @game.game_cards[-1]
     gc2 = @game.game_cards[-2]
     gc3 = @game.game_cards[-3]
     pc1, pc2, pc3, pc4, pc5, pc6, pc7, pc8, pc9, pc10 = @player.cards
-    # require "pry"; binding.pry
     headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
