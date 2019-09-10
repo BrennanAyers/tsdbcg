@@ -71,72 +71,6 @@ BODY: {
 }
 ```
 
-## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
-- A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
-- Example Request:
-```json
-GET api/v1/games/1/players/1
-```
-- Example Response:
-```json
-Status: 200
-BODY: {
-  "playerId": 1,
-  "deck": [
-    {
-      "name": "Copper",
-      "category": "Money",
-      "cost": 0,
-      "victoryPoints": 0,
-      "spendingPower": 1,
-      "buyingPower": 0,
-      "actionsProvided": 0,
-      "cardsToDraw": 0,
-      "image": "copper.jpg",
-      "desc": "",
-      "tags": []
-    },
-    ...
-  ],
-  "discard": [
-    {
-      "name": "Market",
-      "category": "Action",
-      "cost": 5,
-      "victoryPoints": 0,
-      "spendingPower": 1,
-      "buyingPower": 1,
-      "actionsProvided": 1,
-      "cardsToDraw": 1,
-      "image": "market.jpg",
-      "desc": "",
-      "tags": ["+1 Card", "+1 Action", "+1 Buy", "+1 Gold"]
-    },
-    ...
-  ]
-}
-```
-
-
-## POST `api/v1/endturn`
-- A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile.
-- Example Request:
-```json
-POST api/v1/endturn
-BODY: {
-  "gameId": 123,
-  "playerId": 234,
-  "deck": [ 5, 2, 7, 11, 10 ],
-  "bought": [ 12, 13 ],
-  "discard": [ 3, 1, 9, 4, 8, 6, 12, 13 ]
-}
-```
-- Example Response:
-```json
-Status: XXX
-BODY: To Be Determined
-```
-
 ## GET `api/v1/game_state/GAME_ID`
 - A GET request used to query the current Game state. This endpoint returns all publicly available information, such as all Action Cards, purchasable Money and Victory Cards, the Player turn order, Players current hand sizes, current most recent discarded Card, and all information to render the cards themselves.
 - Example Request:
@@ -194,4 +128,69 @@ BODY: {
     }
   }
 }
+```
+
+## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
+- A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
+- Example Request:
+```json
+GET api/v1/games/1/players/1
+```
+- Example Response:
+```json
+Status: 200
+BODY: {
+  "playerId": 1,
+  "deck": [
+    {
+      "name": "Copper",
+      "category": "Money",
+      "cost": 0,
+      "victoryPoints": 0,
+      "spendingPower": 1,
+      "buyingPower": 0,
+      "actionsProvided": 0,
+      "cardsToDraw": 0,
+      "image": "copper.jpg",
+      "desc": "",
+      "tags": []
+    },
+    ...
+  ],
+  "discard": [
+    {
+      "name": "Market",
+      "category": "Action",
+      "cost": 5,
+      "victoryPoints": 0,
+      "spendingPower": 1,
+      "buyingPower": 1,
+      "actionsProvided": 1,
+      "cardsToDraw": 1,
+      "image": "market.jpg",
+      "desc": "",
+      "tags": ["+1 Card", "+1 Action", "+1 Buy", "+1 Gold"]
+    },
+    ...
+  ]
+}
+```
+
+## POST `api/v1/endturn`
+- A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile.
+- Example Request:
+```json
+POST api/v1/endturn
+BODY: {
+  "gameId": 123,
+  "playerId": 234,
+  "deck": [ 5, 2, 7, 11, 10 ],
+  "bought": [ 12, 13 ],
+  "discard": [ 3, 1, 9, 4, 8, 6, 12, 13 ]
+}
+```
+- Example Response:
+```json
+Status: XXX
+BODY: To Be Determined
 ```
