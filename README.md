@@ -195,6 +195,6 @@ BODY: {
 ```json
 Status: 200
 BODY: {
-  {"Message": "Player Tom turn ended"}
+  "Message": "Player Tom turn ended"
 }
 ```
