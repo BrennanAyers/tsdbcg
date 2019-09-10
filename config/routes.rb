@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       post 'endturn', to: 'games#update'
 
       get 'games/:game_id/players/:player_id', to: 'players#show'
+
+      post 'games', to: 'games#new'
     end
   end
 end
