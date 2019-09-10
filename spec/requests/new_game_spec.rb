@@ -11,7 +11,7 @@ describe 'New Game API' do
       'Accept': 'application/json'
     }
     json_payload = {
-      new_player: {
+      newPlayer: {
         name: "Test"
       }
     }
@@ -21,9 +21,9 @@ describe 'New Game API' do
 
     data = JSON.parse(response.body)
 
-    expect(data["player_name"]).to eq("Test")
-    expect(data["player_id"]).to_not be nil
-    expect(data["game_id"]).to_not be nil
+    expect(data["playerName"]).to eq("Test")
+    expect(data["playerId"]).to_not be nil
+    expect(data["gameId"]).to_not be nil
 
     expect(Game.last.players.first.name).to eq("Test")
   end
