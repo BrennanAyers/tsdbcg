@@ -18,6 +18,7 @@ describe 'New Game API' do
     post "/api/v1/games", headers: headers, params: json_payload.to_json
 
     expect(response).to be_successful
+    expect(response.status).to eq(201)
 
     data = JSON.parse(response.body)
 

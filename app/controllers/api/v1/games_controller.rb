@@ -7,7 +7,7 @@ class Api::V1::GamesController < ApplicationController
       playerName: player.name,
       playerId: player.id,
       gameId: game.id
-    }
+    }, status: 201
   end
 
   def update
