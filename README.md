@@ -125,7 +125,7 @@ discard: [ordered array card ids]
 - - `get api/v1/game_state/1` - Returns the game state for game ID of 1.
 - Example Response:
 - - `Status: 200`
--  ~~~~
+```
   Body:
   {
     "tableDeck":
@@ -161,13 +161,21 @@ discard: [ordered array card ids]
         "id_list":[1041,1042,1043,1044,1045,1046,1047,1048]
       }
     ],
-    "playerOrder":["Player_1_Name"],
+    "playerOrder":["Player_1_Name","Player_2_Name"],
     "playerInfo":{
-    "MyString":
-      {
-      "deckSize":10,
-      "topCardDiscard":null,
-      "handSize":5
+      "Player_1_Name":
+        {
+        "deckSize":10,
+        "topCardDiscard":null,
+        "handSize":5
+        }
+      },
+      "Player_2_Name":
+        {
+        "deckSize":10,
+        "topCardDiscard":null,
+        "handSize":5
+        }
       }
-    }
   }
+```
