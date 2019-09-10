@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
       post 'endturn', to: 'games#update'
 
+      post 'join_game', to: 'games#join'
+
       get 'games/:game_id/players/:player_id', to: 'players#show'
     end
   end

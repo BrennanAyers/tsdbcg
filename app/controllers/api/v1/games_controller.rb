@@ -7,4 +7,11 @@ class Api::V1::GamesController < ApplicationController
     player.reorder_discard(params['discard'])
   end
 
+  def join
+    # require "pry"; binding.pry
+    # Player.create(name: params['playerName'], game_id: params['gameId'])
+    game = Game.find(params['gameId'])
+    game.players.create(name: params['playerName'])
+  end
+
 end
