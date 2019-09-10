@@ -68,5 +68,18 @@ RSpec.describe Player, type: :model do
         expect(card.id).to eq(new_deck_order[index])
       end
     end
+
+    it '#reorder_discard' do
+      game = create(:game)
+      player = create(:player, game_id: game.id)
+      game.players << player
+      c1, c2, c3, c4 = create_list(:game_card, 4, game_id: game.id, card_id: @estate.id, player_id: player.id)
+      order = [c3.id, c4.id, c2.id, c1.id]
+      player.reorder_discard(order)
+      player.discard.each_with_index do |card, index|
+        expect(card.deck_index).to eq(index + 1)
+        expect(card.id).to eq(order[index])
+      end
+    end
   end
 end
