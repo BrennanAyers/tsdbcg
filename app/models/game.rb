@@ -8,9 +8,8 @@ has_many :cards, through: :game_cards
     set_table_deck
   end
 
-  def player_order
-    #todo - update to track player order
-    return players
+  def current_player
+    Player.find(players.pluck(:id)[turn % players.count])
   end
 
   private
@@ -40,7 +39,7 @@ has_many :cards, through: :game_cards
         GameCard.create(card_id: card.id, game_id: id)
       end
     end
-  end
+
 
   def set_player_deck(players)
     copper = Card.find_by(name: "Copper")
@@ -56,3 +55,4 @@ has_many :cards, through: :game_cards
       end
     end
   end
+end

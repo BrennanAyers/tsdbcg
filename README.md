@@ -118,6 +118,7 @@ discard: [ordered array card ids]
 - Updates a players deck order based on order of cardIds in array
 - Updates a players discard order based on order of cardIds in array
 - Successfully returns  a 200
+- Advances game turn counter, changing current player to next player
 
 ## GET `api/v1/game_state/<game_id>`
 - This request is used to query the current game state, where <game_id> is the ID of the game object stored in the database. This endpoint returns all publicly available information, such as all kingdom cards, the player order and current hand sizes and discarded card, and information to render the cards themselves.
@@ -177,5 +178,7 @@ discard: [ordered array card ids]
         "handSize":5
         }
       }
+    "currentPlayerName":"Player_1_Name"
+    "currentPlayerId":1
   }
 ```
