@@ -3,4 +3,4 @@ cache: bundler
 services:
   - postgresql
 before_script:
-  - psql -c 'CREATE DATABASE travis_test;' -U postgres
+  - psql -c 'CREATE DATABASE tsdbcg_test;' -U postgres
