@@ -11,7 +11,15 @@ class Api::V1::GamesController < ApplicationController
     # require "pry"; binding.pry
     # Player.create(name: params['playerName'], game_id: params['gameId'])
     game = Game.find(params['gameId'])
-    game.players.create(name: params['playerName'])
+    new_player = game.players.create(name: params['playerName'])
+    # {player_name: "George", player_id: 2, game_id: 1, game_status: "Game Started"}
+    join_info = {
+      gameId: game.id,
+      playerId: new_player.id,
+      playerName: new_player.name,
+      gameStatus: "Game Started"
+    }
+    render json: join_info
   end
 
 end

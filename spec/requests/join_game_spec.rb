@@ -25,8 +25,9 @@ describe 'Join game API' do
       post "/api/v1/join_game", headers: headers, params: json_payload.to_json
 
       expect(response).to be_successful
+      require "pry"; binding.pry
       data = JSON.parse(response.body)
-      player= Player.find_by(name: "George")
+      player = Player.find_by(name: "George")
       expect(data['playerName']).to eq("George")
       expect(data['gameId']).to eq(@game.id)
       expect(data['playerId']).to eq(player.id)
