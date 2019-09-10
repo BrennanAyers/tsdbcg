@@ -23,7 +23,7 @@ rails db:seed
 ```
 Now that our application files are sorted, and the database has pertinent information inside of it, we can start the application:
 ```bash
-rails start
+rails server
 ```
 This will begin the server on your `localhost:`, generally on Port 3000.
 
