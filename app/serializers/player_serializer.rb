@@ -10,18 +10,28 @@ class PlayerSerializer
         name: card.card.name,
         category: card.card.category.split(','),
         cost: card.card.cost,
-        spendingPower: card.card.spending_power,
         victoryPoints: card.card.victory_points,
-        image: "#{card.card.name}.img",
+        spendingPower: card.card.spending_power,
+        buyingPower: card.card.buying_power,
+        actionsProvided: card.card.actions_provided,
+        cardsToDraw: card.card.cards_to_draw,
+        image: card.card.image,
+        desc: card.card.desc,
+        tags: card.card.tags.split(','),
         id: card.id
         }},
       discard: @player.discard.map {|card| {
         name: card.card.name,
         category: card.card.category.split(','),
         cost: card.card.cost,
-        spendingPower: card.card.spending_power,
         victoryPoints: card.card.victory_points,
-        image: "#{card.card.name}.img",
+        spendingPower: card.card.spending_power,
+        buyingPower: card.card.buying_power,
+        actionsProvided: card.card.actions_provided,
+        cardsToDraw: card.card.cards_to_draw,
+        image: card.card.image,
+        desc: card.card.desc,
+        tags: card.card.tags.split(','),
         id: card.id
         }}
     }
