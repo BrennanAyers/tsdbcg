@@ -32,7 +32,7 @@ This will begin the server on your `localhost:`, generally on Port 3000.
 ## POST `api/v1/games`
 - A POST request used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
 - Example Request:
-```
+```json
 POST api/v1/games
 BODY: {
   "newPlayer": {
@@ -41,7 +41,7 @@ BODY: {
   }
 ```
 - Example Response:
-```
+```json
 Status: 201
 BODY: {
   "playerName": "Ted",
@@ -53,7 +53,7 @@ BODY: {
 ## POST `api/v1/join_game`
 - A POST request with a Body containing a Player name, and the Game ID of the Game the Player would like to join. Upon all Players required joining a Game, all GameCards for both the board, and all Players will be created and assigned to their respective areas.
 Example Request:
-```
+```json
 POST /api/v1/join_game
 BODY: {
   "playerName": "George",
@@ -61,7 +61,7 @@ BODY: {
 }
 ```
 Example Response:
-```
+```json
 Status: 200
 BODY: {
   "playerName": "George",
@@ -74,11 +74,11 @@ BODY: {
 ## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
 - A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
 - Example Request:
-```
+```json
 GET api/v1/games/1/players/1
 ```
 - Example Response:
-```
+```json
 Status: 200
 BODY: {
   "playerId": 1,
@@ -97,7 +97,7 @@ BODY: {
       "tags": []
     },
     ...
-  ]
+  ],
   "discard": [
     {
       "name": "Market",
@@ -121,30 +121,30 @@ BODY: {
 ## POST `api/v1/endturn`
 - A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile.
 - Example Request:
-```
+```json
 POST api/v1/endturn
 BODY: {
   "gameId": 123,
-  "playerId": 234
+  "playerId": 234,
   "deck": [ 5, 2, 7, 11, 10 ],
-  "bought": [ 12, 13 ]
+  "bought": [ 12, 13 ],
   "discard": [ 3, 1, 9, 4, 8, 6, 12, 13 ]
 }
 ```
 - Example Response:
-```
+```json
 Status: XXX
 BODY: To Be Determined
 ```
 
 ## GET `api/v1/game_state/GAME_ID`
-- This request is used to query the current Game state. This endpoint returns all publicly available information, such as all Action Cards, purchasable Money and Victory Cards, the Player turn order, Players current hand sizes, current most recent discarded Card, and all information to render the cards themselves.
+- A GET request used to query the current Game state. This endpoint returns all publicly available information, such as all Action Cards, purchasable Money and Victory Cards, the Player turn order, Players current hand sizes, current most recent discarded Card, and all information to render the cards themselves.
 - Example Request:
-```
+```json
 GET api/v1/game_state/1
 ```
 - Example Response:
-```
+```json
 Status: 200
 BODY: {
   "tableDeck": [
