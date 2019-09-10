@@ -4,8 +4,22 @@ describe 'Player State API' do
   before :each do
     @game = create(:game)
     @player = create(:player, game_id: @game.id)
-    @gold = create(:copper)
+    @copper = create(:copper)
+    silver = create(:silver)
+    gold = create(:gold)
     @estate = create(:estate)
+    duchy = create(:duchy)
+    province = create(:province)
+    village = create(:village)
+    militia = create(:militia)
+    smithy = create(:smithy)
+    market = create(:market)
+    mine = create(:mine)
+    remodel = create(:remodel)
+    cellar = create(:cellar)
+    moat = create(:moat)
+    woodcutter = create(:woodcutter)
+    workshop = create(:workshop)
   end
 
   it 'sends the players current deck and discard' do
@@ -58,14 +72,14 @@ describe 'Player State API' do
 
     card_name_expectations = [
       @estate.name,
-      @gold.name,
-      @gold.name,
-      @gold.name,
-      @gold.name,
-      @gold.name,
-      @gold.name,
+      @copper.name,
+      @copper.name,
+      @copper.name,
+      @copper.name,
+      @copper.name,
+      @copper.name,
       @estate.name,
-      @gold.name,
+      @copper.name,
       @estate.name
     ]
     data['deck'].each_with_index do |card, index|
