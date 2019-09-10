@@ -1,4 +1,15 @@
 class Api::V1::GamesController < ApplicationController
+  def create
+    game = Game.create
+    player = Player.new(name: player_params[:name], game_id: game.id)
+    player.save
+    render json: {
+      playerName: player.name,
+      playerId: player.id,
+      gameId: game.id
+    }, status: 201
+  end
+
   def update
     game_id = (params["gameId"])
     player = Player.find(params["playerId"])
@@ -20,4 +31,9 @@ class Api::V1::GamesController < ApplicationController
     render json: join_info
   end
 
+  private
+
+  def player_params
+    params.require(:newPlayer).permit(:name)
+  end
 end

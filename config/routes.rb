@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       post 'join_game', to: 'games#join'
 
       get 'games/:game_id/players/:player_id', to: 'players#show'
+
+      post 'games', to: 'games#create'
     end
   end
 end
