@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 describe 'Join game API' do
@@ -9,7 +8,6 @@ describe 'Join game API' do
     @game.players << @player
     @copper = create(:copper)
     @estate = create(:estate)
-    # @game.start
   end
 
   it "allows a player to join a game" do
@@ -25,22 +23,15 @@ describe 'Join game API' do
       post "/api/v1/join_game", headers: headers, params: json_payload.to_json
 
       expect(response).to be_successful
-      require "pry"; binding.pry
       data = JSON.parse(response.body)
-      player = Player.find_by(name: "George")
+      player2 = Player.find_by(name: "George")
       expect(data['playerName']).to eq("George")
       expect(data['gameId']).to eq(@game.id)
-      expect(data['playerId']).to eq(player.id)
+      expect(data['playerId']).to eq(player2.id)
       expect(data['gameStatus']).to eq("Game Started")
-
+      #Make sure game started
+      @player.reload
+      expect(@player.cards.count).to eq(10)
+      expect(player2.cards.count).to eq(10)
   end
-
- # POST /api/v1/join_game
- # BODY: {player_name: "George", game_id: 1}
- # Response:
- # BODY: {player_name: "George", player_id: 2, game_id: 1, game_status: "Game Started"}
-
-
-  # check uniqueness of name
-
 end
