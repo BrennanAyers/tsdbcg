@@ -5,8 +5,10 @@ describe 'End turn API' do
   before :each do
     @game, @g2 = create_list(:game, 2)
     @player = create(:player, game_id: @game.id)
+    @player3 = create(:player, game_id: @game.id)
     @player2 = create(:player, game_id: @g2.id)
     @game.players << @player
+    @game.players << @player3
     @g2.players << @player2
     @copper = create(:copper)
     @estate = create(:estate)
@@ -17,6 +19,7 @@ describe 'End turn API' do
     gc1 = @game.game_cards[-1]
     gc2 = @game.game_cards[-2]
     gc3 = @game.game_cards[-3]
+
     pc1, pc2, pc3, pc4, pc5, pc6, pc7, pc8, pc9, pc10 = @player.cards
     headers = {
       'Content-Type': 'application/json',
@@ -30,6 +33,7 @@ describe 'End turn API' do
       discard: [pc4.id, pc5.id, gc2.id, gc3.id, pc10.id, pc9.id, pc6.id, gc1.id]
       }
 
+      expect(@game.current_player).to eq(@player)
     post "/api/v1/endturn", headers: headers, params: json_payload.to_json
 
     expect(response).to be_successful
@@ -52,5 +56,9 @@ describe 'End turn API' do
       expect(game_card.discarded).to eq(true)
       expect(game_card.deck_index).to eq(i + 1)
     end
+    #Changes player
+    @game.reload
+    require "pry"; binding.pry
+      expect(@game.current_player).to eq(@player3)
   end
 end

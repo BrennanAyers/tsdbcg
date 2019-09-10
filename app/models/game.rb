@@ -24,6 +24,10 @@ has_many :cards, through: :game_cards
     end
   end
 
+  def current_player
+    Player.find(players.pluck(:id)[turn % players.count])
+  end
+
   def player_order
     #todo - update to track player order
     return players
