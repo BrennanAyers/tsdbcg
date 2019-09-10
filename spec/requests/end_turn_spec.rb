@@ -58,7 +58,9 @@ describe 'End turn API' do
     end
     #Changes player
     @game.reload
-    require "pry"; binding.pry
       expect(@game.current_player).to eq(@player3)
+      post "/api/v1/endturn", headers: headers, params: json_payload.to_json
+      @game.reload
+      expect(@game.current_player).to eq(@player)
   end
 end

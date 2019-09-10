@@ -46,5 +46,8 @@ describe 'Game State API' do
     expect(JSON.parse(response.body)["playerInfo"][@player.name]).to have_key("deckSize")
     expect(JSON.parse(response.body)["playerInfo"][@player.name]).to have_key("topCardDiscard")
     expect(JSON.parse(response.body)["playerInfo"][@player.name]).to have_key("handSize")
+    data = JSON.parse(response.body)
+    expect(data['activePlayerName']).to eq(@player.name)
+    expect(data['activePlayerId']).to eq(@player.id)
   end
 end

@@ -22,6 +22,7 @@ class GameSerializer
       }
     end
     players = @game.player_order
+    current_player = @game.current_player
     player_names = players.map {|player| player.name}
     player_info_hash = {}
     players.each do |player|
@@ -33,6 +34,8 @@ class GameSerializer
     end
     return {
       tableDeck: card_arr,
+      activePlayerName: current_player.name,
+      activePlayerId: current_player.id,
       playerOrder: player_names,
       playerInfo: player_info_hash
     }
