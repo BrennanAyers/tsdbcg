@@ -30,21 +30,30 @@ This will begin the server on your `localhost:`, generally on Port 3000.
 # Endpoints
 
 ## POST `api/v1/games`
-- This request is used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
+- A POST request used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
 - Example Request:
-- - `POST api/v1/games` `BODY: { newPlayer: { name: "Ted" } }`
+```
+POST api/v1/games
+BODY: { newPlayer: { name: "Ted" } }
+```
 - Example Response:
-- - `Status: 201`
-- - `Body: { playerName: "Ted", playerId: 1, gameId: 1 }`
+```
+Status: 201
+BODY: {
+  playerName: "Ted",
+  playerId: 1,
+  gameId: 1
+}
+```
 
 ## POST `api/v1/join_game`
-- A POST with a Body containing my Player Name, and the Game ID Of the Game I would like to join
-In the format:
+- A POST request with a Body containing a Player name, and the Game ID of the Game the Player would like to join. Upon all Players required joining a Game, all GameCards for both the board, and all Players will be created and assigned to their respective areas.
+Example Request:
 ```
 POST /api/v1/join_game
-BODY: {player_name: "George", game_id: 1}
+BODY: { "player_name": "George", "game_id": 1}
 ```
-successfully returns:
+Example Response:
 ```
 Status: 200
 BODY: {
@@ -54,18 +63,19 @@ BODY: {
   gameStatus: "Game Started"
 }
 ```
-- This endpoint starts the game, instantiating gameCards and decks for both players
 
 ## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
 - A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
 - Example Request:
-- - `GET api/v1/games/1/players/1`
-- Example Response:
-- - `Status: 200`
 ```
+GET api/v1/games/1/players/1
+```
+- Example Response:
+```
+Status: 200
 BODY: {
   playerId: 1,
-  deck: {
+  deck: [
     {
       name: "Copper",
       category: "Money",
@@ -80,8 +90,8 @@ BODY: {
       tags: []
     },
     ...
-  }
-  discard: {
+  ],
+  discard: [
     {
       name: "Market",
       category: "Action",
@@ -96,7 +106,7 @@ BODY: {
       tags: ["+1 Card", "+1 Action", "+1 Buy", "+1 Gold"]
     },
     ...
-  }
+  ]
 }
 ```
 
