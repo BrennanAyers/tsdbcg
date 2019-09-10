@@ -33,6 +33,8 @@ describe 'End turn API' do
     post "/api/v1/endturn", headers: headers, params: json_payload.to_json
 
     expect(response).to be_successful
+    expect(response.status).to eq(200)
+    expect(JSON.parse(response.body)['Message']).to eq("Player #{@player.name} turn ended")
     #Assigns bought cards to player
     [gc1,gc2,gc3].map(&:reload)
     expect(gc1.player_id).to eq(@player.id)
