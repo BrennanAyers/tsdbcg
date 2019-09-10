@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 5) do
     t.boolean "discarded", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deck_index"
     t.index ["card_id"], name: "index_game_cards_on_card_id"
     t.index ["game_id"], name: "index_game_cards_on_game_id"
   end
