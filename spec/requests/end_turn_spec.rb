@@ -9,7 +9,21 @@ describe 'End turn API' do
     @game.players << @player
     @g2.players << @player2
     @copper = create(:copper)
+    silver = create(:silver)
+    gold = create(:gold)
     @estate = create(:estate)
+    duchy = create(:duchy)
+    province = create(:province)
+    village = create(:village)
+    militia = create(:militia)
+    smithy = create(:smithy)
+    market = create(:market)
+    mine = create(:mine)
+    remodel = create(:remodel)
+    cellar = create(:cellar)
+    moat = create(:moat)
+    woodcutter = create(:woodcutter)
+    workshop = create(:workshop)
     @game.start
   end
 
