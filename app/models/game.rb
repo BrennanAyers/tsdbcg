@@ -23,4 +23,9 @@ has_many :cards, through: :game_cards
       GameCard.create(card_id: estate.id, game_id: id)
     end
   end
+
+  def player_order
+    #todo - update to track player order
+    return players
+  end
 end

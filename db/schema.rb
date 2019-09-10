@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 5) do
     t.integer "spending_power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "buying_power"
+    t.integer "actions_provided"
+    t.integer "cards_to_draw"
+    t.string "image"
+    t.string "desc"
+    t.string "tags"
   end
 
   create_table "game_cards", force: :cascade do |t|
