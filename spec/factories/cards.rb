@@ -6,7 +6,7 @@ FactoryBot.define do
     name { "Gold" }
     category { "Money" }
     cost { 6 }
-    victory_points { nil }
+    victory_points { 0 }
     spending_power { 3 }
     buying_power { 0 }
     actions_provided { 0 }
@@ -20,7 +20,7 @@ FactoryBot.define do
     name { "Silver" }
     category { "Money" }
     cost { 3 }
-    victory_points { nil }
+    victory_points { 0 }
     spending_power { 2 }
     buying_power { 0 }
     actions_provided { 0 }
@@ -34,7 +34,7 @@ FactoryBot.define do
     name { "Copper" }
     category { "Money" }
     cost { 0 }
-    victory_points { nil }
+    victory_points { 0 }
     spending_power { 1 }
     buying_power { 0 }
     actions_provided { 0 }
@@ -49,7 +49,7 @@ FactoryBot.define do
     category { "Victory" }
     cost { 2 }
     victory_points { 1 }
-    spending_power { nil }
+    spending_power { 0 }
     buying_power { 0 }
     actions_provided { 0 }
     cards_to_draw { 0 }
@@ -63,7 +63,7 @@ FactoryBot.define do
     category { "Victory" }
     cost { 5 }
     victory_points { 3 }
-    spending_power { nil }
+    spending_power { 0 }
     buying_power { 0 }
     actions_provided { 0 }
     cards_to_draw { 0 }
@@ -77,7 +77,7 @@ FactoryBot.define do
     category { "Victory" }
     cost { 8 }
     victory_points { 6 }
-    spending_power { nil }
+    spending_power { 0 }
     buying_power { 0 }
     actions_provided { 0 }
     cards_to_draw { 0 }
