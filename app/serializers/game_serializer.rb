@@ -21,7 +21,7 @@ class GameSerializer
         id_list: card.fetch_card_ids
       }
     end
-    players = @game.player_order
+    players = @game.players
     current_player = @game.current_player
     player_names = players.map {|player| player.name}
     player_info_hash = {}

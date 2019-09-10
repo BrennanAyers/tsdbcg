@@ -7,7 +7,21 @@ describe 'Join game API' do
     @player = create(:player, game_id: @game.id)
     @game.players << @player
     @copper = create(:copper)
+    silver = create(:silver)
+    gold = create(:gold)
     @estate = create(:estate)
+    duchy = create(:duchy)
+    province = create(:province)
+    village = create(:village)
+    militia = create(:militia)
+    smithy = create(:smithy)
+    market = create(:market)
+    mine = create(:mine)
+    remodel = create(:remodel)
+    cellar = create(:cellar)
+    moat = create(:moat)
+    woodcutter = create(:woodcutter)
+    workshop = create(:workshop)
   end
 
   it "allows a player to join a game" do
