@@ -56,6 +56,25 @@ BODY: {
 ```
 - This endpoint starts the game, instantiating gameCards and decks for both players
 
+
+## POST `api/v1/endturn`
+This is the endpoint that is hit at the end of the turn to update a players deck/discard and the tableDeck.
+A POST request in the format:
+```
+POST api/v1/endturn
+Body:
+{
+gameId: 123,
+playerId: 234
+deck: [ ordered array cards ids],
+bought: [array ids ]
+discard: [ordered array card ids]
+}
+```
+- Updates a players deck order based on order of cardIds in array
+- Updates a players discard order based on order of cardIds in array
+- Successfully returns  a 200
+
 ## GET `api/v1/game_state/<game_id>`
 - This request is used to query the current game state, where <game_id> is the ID of the game object stored in the database. This endpoint returns all publicly available information, such as all kingdom cards, the player order and current hand sizes and discarded card, and information to render the cards themselves.
 - Example Request:
