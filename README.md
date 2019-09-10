@@ -55,3 +55,47 @@ BODY: {
 }
 ```
 - This endpoint starts the game, instantiating gameCards and decks for both players
+
+## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
+- A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
+- Example Request:
+- - `GET api/v1/games/1/players/1`
+- Example Response:
+- - `Status: 200`
+```
+BODY: {
+  playerId: 1,
+  deck: {
+    {
+      name: "Copper",
+      category: "Money",
+      cost: 0,
+      victoryPoints: 0,
+      spendingPower: 1,
+      buyingPower: 0,
+      actionsProvided: 0,
+      cardsToDraw: 0,
+      image: "copper.jpg",
+      desc: "",
+      tags: []
+    },
+    ...
+  }
+  discard: {
+    {
+      name: "Market",
+      category: "Action",
+      cost: 5,
+      victoryPoints: 0,
+      spendingPower: 1,
+      buyingPower: 1,
+      actionsProvided: 1,
+      cardsToDraw: 1,
+      image: "market.jpg",
+      desc: "",
+      tags: ["+1 Card", "+1 Action", "+1 Buy", "+1 Gold"]
+    },
+    ...
+  }
+}
+```
