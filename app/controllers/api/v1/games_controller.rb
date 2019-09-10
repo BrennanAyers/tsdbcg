@@ -4,9 +4,9 @@ class Api::V1::GamesController < ApplicationController
     player = Player.new(name: player_params[:name], game_id: game.id)
     player.save
     render json: {
-      player_name: player.name,
-      player_id: player.id,
-      game_id: game.id
+      playerName: player.name,
+      playerId: player.id,
+      gameId: game.id
     }
   end
 
@@ -21,6 +21,6 @@ class Api::V1::GamesController < ApplicationController
   private
 
   def player_params
-    params.require(:new_player).permit(:name)
+    params.require(:newPlayer).permit(:name)
   end
 end
