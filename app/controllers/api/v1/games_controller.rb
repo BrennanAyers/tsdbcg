@@ -1,5 +1,5 @@
 class Api::V1::GamesController < ApplicationController
-  def new
+  def create
     game = Game.create
     player = Player.new(name: player_params[:name], game_id: game.id)
     player.save

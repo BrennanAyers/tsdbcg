@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
       get 'games/:game_id/players/:player_id', to: 'players#show'
 
-      post 'games', to: 'games#new'
+      post 'games', to: 'games#create'
     end
   end
 end
