@@ -29,3 +29,21 @@ BODY: {
 }
 ```
 - This endpoint starts the game, instantiating gameCards and decks for both players
+
+## POST `api/v1/endturn`
+This is the endpoint that is hit at the end of the turn to update a players deck/discard and the tableDeck.
+A POST request in the format:
+```
+POST api/v1/endturn
+Body:
+{
+gameId: 123,
+playerId: 234
+deck: [ ordered array cards ids],
+bought: [array ids ]
+discard: [ordered array card ids]
+}
+```
+- Updates a players deck order based on order of cardIds in array
+- Updates a players discard order based on order of cardIds in array
+- Successfully returns  a 200
