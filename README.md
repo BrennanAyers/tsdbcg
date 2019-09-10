@@ -126,7 +126,9 @@ BODY: {
       "topCardDiscard": null,
       "handSize": 5
     }
-  }
+  },
+  "currentPlayerName": "Player_1_Name",
+  "currentPlayerId": 1
 }
 ```
 
@@ -177,7 +179,7 @@ BODY: {
 ```
 
 ## POST `api/v1/endturn`
-- A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile.
+- A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile. On a successful request, the Game turn counter will be advanced, moving from the current Player to the next in the queue.
 - Example Request:
 ```json
 POST api/v1/endturn
