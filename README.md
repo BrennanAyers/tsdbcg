@@ -1,2 +1,2 @@
 # tsdbcg
-A Deck Building Card Game built using X and Y working with A to Z.
+[![Build Status](https://travis-ci.com/BrennanAyers/tsdbcg.svg?branch=master)](https://travis-ci.com/BrennanAyers/tsdbcg)
