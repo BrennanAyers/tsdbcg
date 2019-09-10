@@ -11,8 +11,10 @@ describe 'New Game API' do
       'Accept': 'application/json'
     }
     json_payload = {
-      player_name: "Test"
+      new_player: {
+        name: "Test"
       }
+    }
     post "/api/v1/games", headers: headers, params: json_payload.to_json
 
     expect(response).to be_successful
