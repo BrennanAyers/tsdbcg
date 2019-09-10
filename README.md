@@ -23,162 +23,176 @@ rails db:seed
 ```
 Now that our application files are sorted, and the database has pertinent information inside of it, we can start the application:
 ```bash
-rails start
+rails server
 ```
 This will begin the server on your `localhost:`, generally on Port 3000.
 
 # Endpoints
 
 ## POST `api/v1/games`
-- This request is used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
+- A POST request used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
 - Example Request:
-- - `POST api/v1/games` `BODY: { newPlayer: { name: "Ted" } }`
-- Example Response:
-- - `Status: 201`
-- - `Body: { playerName: "Ted", playerId: 1, gameId: 1 }`
-
-## POST `api/v1/join_game`
-- A POST with a Body containing my Player Name, and the Game ID Of the Game I would like to join
-In the format:
-```
-POST /api/v1/join_game
-BODY: {player_name: "George", game_id: 1}
-```
-successfully returns:
-```
-Status: 200
+```json
+POST api/v1/games
 BODY: {
-  playerName: "George",
-  playerId: 2,
-  gameId: 1,
-  gameStatus: "Game Started"
+  "newPlayer": {
+    "name": "Ted"
+    }
+  }
+```
+- Example Response:
+```json
+Status: 201
+BODY: {
+  "playerName": "Ted",
+  "playerId": 1,
+  "gameId": 1
 }
 ```
-- This endpoint starts the game, instantiating gameCards and decks for both players
+
+## POST `api/v1/join_game`
+- A POST request with a Body containing a Player name, and the Game ID of the Game the Player would like to join. Upon all Players required joining a Game, all GameCards for both the board, and all Players will be created and assigned to their respective areas.
+Example Request:
+```json
+POST /api/v1/join_game
+BODY: {
+  "playerName": "George",
+  "gameId": 1
+}
+```
+Example Response:
+```json
+Status: 200
+BODY: {
+  "playerName": "George",
+  "playerId": 2,
+  "gameId": 1,
+  "gameStatus": "Game Started"
+}
+```
+
+## GET `api/v1/game_state/GAME_ID`
+- A GET request used to query the current Game state. This endpoint returns all publicly available information, such as all Action Cards, purchasable Money and Victory Cards, the Player turn order, Players current hand sizes, current most recent discarded Card, and all information to render the cards themselves.
+- Example Request:
+```json
+GET api/v1/game_state/1
+```
+- Example Response:
+```json
+Status: 200
+BODY: {
+  "tableDeck": [
+    {
+      "name": "Gold",
+      "category": ["Money"],
+      "cost": 6,
+      "victoryPoints": null,
+      "spendingPower": 3,
+      "buyingPower": 0,
+      "actionsProvided": 3,
+      "cardsToDraw": 0,
+      "image": "./gold.jpg",
+      "desc": "",
+      "tags": [],
+      "countAvailable": 5,
+      "id_list": [ 1011, 1012, 1013, 1014, 1015 ]
+    },
+    {
+      "name": "Estate",
+      "category": ["Victory"],
+      "cost": 2,
+      "victoryPoints": 1,
+      "spendingPower": null,
+      "buyingPower": 0,
+      "actionsProvided": null,
+      "cardsToDraw": 0,
+      "image": "./estate.jpg",
+      "desc": "",
+      "tags": [],
+      "countAvailable": 8,
+      "id_list": [ 1041, 1042, 1043, 1044, 1045, 1046, 1047, 1048]
+    },
+    ...
+  ],
+  "playerOrder": [ "Player_1_Name", "Player_2_Name" ],
+  "playerInfo": {
+    "Player_1_Name": {
+      "deckSize": 10,
+      "topCardDiscard": null,
+      "handSize": 5
+    },
+    "Player_2_Name": {
+      "deckSize": 10,
+      "topCardDiscard": null,
+      "handSize": 5
+    }
+  },
+  "currentPlayerName": "Player_1_Name",
+  "currentPlayerId": 1
+}
+```
 
 ## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
 - A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
 - Example Request:
-- - `GET api/v1/games/1/players/1`
-- Example Response:
-- - `Status: 200`
+```json
+GET api/v1/games/1/players/1
 ```
+- Example Response:
+```json
+Status: 200
 BODY: {
-  playerId: 1,
-  deck: {
+  "playerId": 1,
+  "deck": [
     {
-      name: "Copper",
-      category: "Money",
-      cost: 0,
-      victoryPoints: 0,
-      spendingPower: 1,
-      buyingPower: 0,
-      actionsProvided: 0,
-      cardsToDraw: 0,
-      image: "copper.jpg",
-      desc: "",
-      tags: []
+      "name": "Copper",
+      "category": "Money",
+      "cost": 0,
+      "victoryPoints": 0,
+      "spendingPower": 1,
+      "buyingPower": 0,
+      "actionsProvided": 0,
+      "cardsToDraw": 0,
+      "image": "copper.jpg",
+      "desc": "",
+      "tags": []
     },
     ...
-  }
-  discard: {
+  ],
+  "discard": [
     {
-      name: "Market",
-      category: "Action",
-      cost: 5,
-      victoryPoints: 0,
-      spendingPower: 1,
-      buyingPower: 1,
-      actionsProvided: 1,
-      cardsToDraw: 1,
-      image: "market.jpg",
-      desc: "",
-      tags: ["+1 Card", "+1 Action", "+1 Buy", "+1 Gold"]
+      "name": "Market",
+      "category": "Action",
+      "cost": 5,
+      "victoryPoints": 0,
+      "spendingPower": 1,
+      "buyingPower": 1,
+      "actionsProvided": 1,
+      "cardsToDraw": 1,
+      "image": "market.jpg",
+      "desc": "",
+      "tags": ["+1 Card", "+1 Action", "+1 Buy", "+1 Gold"]
     },
     ...
-  }
+  ]
 }
 ```
-
 
 ## POST `api/v1/endturn`
-This is the endpoint that is hit at the end of the turn to update a players deck/discard and the tableDeck.
-A POST request in the format:
-```
+- A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile. On a successful request, the Game turn counter will be advanced, moving from the current Player to the next in the queue.
+- Example Request:
+```json
 POST api/v1/endturn
-Body:
-{
-gameId: 123,
-playerId: 234
-deck: [ ordered array cards ids],
-bought: [array ids ]
-discard: [ordered array card ids]
+BODY: {
+  "gameId": 123,
+  "playerId": 234,
+  "deck": [ 5, 2, 7, 11, 10 ],
+  "bought": [ 12, 13 ],
+  "discard": [ 3, 1, 9, 4, 8, 6, 12, 13 ]
 }
 ```
-- Updates a players deck order based on order of cardIds in array
-- Updates a players discard order based on order of cardIds in array
-- Successfully returns  a 200
-- Advances game turn counter, changing current player to next player
-
-## GET `api/v1/game_state/<game_id>`
-- This request is used to query the current game state, where <game_id> is the ID of the game object stored in the database. This endpoint returns all publicly available information, such as all kingdom cards, the player order and current hand sizes and discarded card, and information to render the cards themselves.
-- Example Request:
-- - `get api/v1/game_state/1` - Returns the game state for game ID of 1.
 - Example Response:
-- - `Status: 200`
-```
-  Body:
-  {
-    "tableDeck":
-    [
-      {
-        "name":"Gold",
-        "category":["Money"],
-        "cost":6,
-        "victoryPoints":null,
-        "spendingPower":3,
-        "buyingPower":0,
-        "actionsProvided":3,
-        "cardsToDraw":0,
-        "image":"./gold.jpg",
-        "desc":"",
-        "tags":[],
-        "countAvailable":5,
-        "id_list":[1011,1012,1013,1014,1015]
-      },
-      {
-        "name":"Estate",
-        "category":["Victory"],
-        "cost":2,
-        "victoryPoints":1,
-        "spendingPower":null,
-        "buyingPower":0,
-        "actionsProvided":null,
-        "cardsToDraw":0,
-        "image":"./estate.jpg",
-        "desc":"",
-        "tags":[],
-        "countAvailable":8,
-        "id_list":[1041,1042,1043,1044,1045,1046,1047,1048]
-      }
-    ],
-    "playerOrder":["Player_1_Name","Player_2_Name"],
-    "playerInfo":{
-      "Player_1_Name":
-        {
-        "deckSize":10,
-        "topCardDiscard":null,
-        "handSize":5
-        }
-      },
-      "Player_2_Name":
-        {
-        "deckSize":10,
-        "topCardDiscard":null,
-        "handSize":5
-        }
-      }
-    "currentPlayerName":"Player_1_Name"
-    "currentPlayerId":1
-  }
+```json
+Status: XXX
+BODY: To Be Determined
 ```
