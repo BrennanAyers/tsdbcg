@@ -193,6 +193,8 @@ BODY: {
 ```
 - Example Response:
 ```json
-Status: XXX
-BODY: To Be Determined
+Status: 200
+BODY: {
+  {"Message": "Player Tom turn ended"}
+}
 ```
