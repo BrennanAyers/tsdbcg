@@ -1,2 +1,6 @@
 language: ruby
 cache: bundler
+services:
+  - postgresql
+before_script:
+  - psql -c 'CREATE DATABASE tsdbcg_test;' -U postgres
