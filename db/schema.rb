@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_210557) do
+ActiveRecord::Schema.define(version: 7) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 2019_09_10_210557) do
     t.string "name"
     t.string "category"
     t.integer "cost"
-    t.integer "victory_points"
-    t.integer "spending_power"
+    t.integer "victory_points", default: 0
+    t.integer "spending_power", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "buying_power"
-    t.integer "actions_provided"
-    t.integer "cards_to_draw"
+    t.integer "buying_power", default: 0
+    t.integer "actions_provided", default: 0
+    t.integer "cards_to_draw", default: 0
     t.string "image"
     t.string "desc"
     t.string "tags"

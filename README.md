@@ -3,8 +3,71 @@
 
 
 ## Setup
-- Ruby Version: 2.4.1
-- Rails Version: 5.2.3
+### Requirements
+- Brew Package Manager
+- Git
+- PostgreSQL
+- Ruby Version: `2.4.1`
+- Rails Version: `5.2.3`
+
+<details><summary><b>Brew Installation</b></summary>
+<p>
+
+[Brew](https://brew.sh/) is a package manager for Mac OS (or Linux) that allows us to install libraries using easy and convenient terminal commands. We need Brew to install later required elements of TSDBCG. To install Brew on a Mac OS machine, run in your terminal:
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+For Linux instructions, refer [here](https://docs.brew.sh/Homebrew-on-Linux).
+</p>
+</details>
+
+<details><summary><b>Git Installation</b></summary>
+<p>
+
+If you're on GitHub, you're halfway to knowing what Git is! Git is a 'version control system' that tracks changes to code, stored in what is generally called a 'repository'. GitHub is a remote hosting service of these repositories, and you're looking at one right now!
+There are many ways to install and use Git:
+- Brew `brew install git`
+- [Desktop Client](https://desktop.github.com/)
+- [Installable Source](https://git-scm.com/downloads) for Mac, Windows, Linux
+- - Further instructions [here](https://help.github.com/en/articles/setting-your-username-in-git) and [here](https://help.github.com/en/articles/setting-your-commit-email-address)
+</p>
+</details>
+
+<details><summary><b>Rbenv Installation</b></summary>
+<p>
+
+[rbenv](https://github.com/rbenv/rbenv) is an environment manager for the Ruby language that allows us to install and control multiple versions of Ruby on our computer. We can use Brew to install rbenv in our terminal:
+```bash
+brew install rbenv
+rbenv init
+```
+The terminal will now instruct you to input some shortcuts for rbenv in your `~/.bash_profile`:
+- `nano ~/.bash_profile` (or your preferred command line text editor)
+- CMD+V/CTRL-V `eval "$(rbenv init -)"` - to paste the shortcut
+- CTRL+X - to quit Nano
+- Y - to save the file
+- `source ~/.bash_profile`
+- `curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash`
+- The last command will determine if your rbenv setup was successful. If you run into issues installing rbenv, I would suggest checking out their [issues board](https://github.com/rbenv/rbenv/issues), or Googling any specific errors on Google.
+- If you are unable to use Brew, refer to [this section](https://github.com/rbenv/rbenv#basic-github-checkout) of the rbenv documentation.
+</p>
+</details>
+
+<details><summary><b>PostgreSQL Installation</b></summary>
+<p>
+
+[Postgres](https://en.wikipedia.org/wiki/PostgreSQL) is a relational database management system that we use to store information in TSDBCG. All of the set up will be handled by Rails once we get to that step, but Postgres does need to be installed for that to happen. We highly suggest using Brew for this part of the process, but in the situation where Brew is not available, [these](https://www.postgresql.org/docs/current/install-getsource.html) are the instructions.
+- For a Brew installation:
+```bash
+brew install postgresql
+brew services start postgresql
+psql postgres
+```
+</p>
+</details>
+
+- All below commands are to be run in your terminal or command line of choice.
+
 To get the TSDBCG application up and running on your local machine, start by getting the source code from this GitHub repository:
 ```bash
 git clone git@github.com:BrennanAyers/tsdbcg.git (for SSH)
@@ -14,8 +77,7 @@ TSDBCG uses the `bundler` library to manage dependencies. This process will take
 ```bash
 bundler install
 ```
-We need to set up our database next, of which TSDBCG uses Postgres. We suggest using the [Brew](https://brew.sh/) command-line tool to download and control Postgres. If you already have Brew installed, follow [these steps](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3) to initialize a Postgres environment.
-After those steps, run in the TSDBCG directory:
+After Bundler installs all required packages, run in the TSDBCG directory:
 ```bash
 rails db:create
 rails db:migrate
@@ -86,7 +148,7 @@ BODY: {
       "name": "Gold",
       "category": ["Money"],
       "cost": 6,
-      "victoryPoints": null,
+      "victoryPoints": 0,
       "spendingPower": 3,
       "buyingPower": 0,
       "actionsProvided": 3,
@@ -102,9 +164,9 @@ BODY: {
       "category": ["Victory"],
       "cost": 2,
       "victoryPoints": 1,
-      "spendingPower": null,
+      "spendingPower": 0,
       "buyingPower": 0,
-      "actionsProvided": null,
+      "actionsProvided": 0,
       "cardsToDraw": 0,
       "image": "./estate.jpg",
       "desc": "",
@@ -118,17 +180,17 @@ BODY: {
   "playerInfo": {
     "Player_1_Name": {
       "deckSize": 10,
-      "topCardDiscard": null,
+      "topCardDiscard": 0,
       "handSize": 5
     },
     "Player_2_Name": {
       "deckSize": 10,
-      "topCardDiscard": null,
+      "topCardDiscard": 0,
       "handSize": 5
     }
   },
-  "currentPlayerName": "Player_1_Name",
-  "currentPlayerId": 1
+  "activePlayerName": "Player_1_Name",
+  "activePlayerId": 1
 }
 ```
 
