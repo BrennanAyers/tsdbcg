@@ -148,7 +148,7 @@ BODY: {
       "name": "Gold",
       "category": ["Money"],
       "cost": 6,
-      "victoryPoints": null,
+      "victoryPoints": 0,
       "spendingPower": 3,
       "buyingPower": 0,
       "actionsProvided": 3,
@@ -164,9 +164,9 @@ BODY: {
       "category": ["Victory"],
       "cost": 2,
       "victoryPoints": 1,
-      "spendingPower": null,
+      "spendingPower": 0,
       "buyingPower": 0,
-      "actionsProvided": null,
+      "actionsProvided": 0,
       "cardsToDraw": 0,
       "image": "./estate.jpg",
       "desc": "",
@@ -180,17 +180,17 @@ BODY: {
   "playerInfo": {
     "Player_1_Name": {
       "deckSize": 10,
-      "topCardDiscard": null,
+      "topCardDiscard": 0,
       "handSize": 5
     },
     "Player_2_Name": {
       "deckSize": 10,
-      "topCardDiscard": null,
+      "topCardDiscard": 0,
       "handSize": 5
     }
   },
-  "currentPlayerName": "Player_1_Name",
-  "currentPlayerId": 1
+  "activePlayerName": "Player_1_Name",
+  "activePlayerId": 1
 }
 ```
 
