@@ -261,6 +261,11 @@ BODY: {
 }
 ```
 
+# Testing
+- Because TSDBCG is built using Rails, the project is set up for testing using the RSpec framework with its robust Rails integration. All tests written are setup inside the spec, there are no required seeds or files to run our test suite.
+- TSDBCG uses SimpleCov to track test coverage on our code. The `coverage` folder that SimpleCov generates is in `.gitignore`, but you should still be able to check coverage by opening the `index.html` files after running the test suite. Code coverage is currently at 100%, so any further contributions should follow this lead.
+- To run all of our specs using RSpec, in the terminal: `rspec` or `bundle exec rspec`
+
 <details>
 <summary><b>How To Play</b></summary>
 <br>
