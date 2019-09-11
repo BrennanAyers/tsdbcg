@@ -70,4 +70,36 @@ describe 'Join game API' do
       #Make sure game only has 2 players
       expect(@game.players.length).to eq(2)
   end
+
+  it "keeps the existing player if they rejoin" do
+    headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+    inital_payload = {
+      gameId: @game.id,
+      playerName: "George",
+    }
+    second_payload = {
+      gameId: @game.id,
+      playerName: "George",
+    }
+    third_payload = {
+      gameId: @game.id,
+      playerName: "George",
+    }
+    post "/api/v1/join_game", headers: headers, params: inital_payload.to_json
+    post "/api/v1/join_game", headers: headers, params: second_payload.to_json
+    post "/api/v1/join_game", headers: headers, params: third_payload.to_json
+      expect(response).to be_successful
+      expect(response.status).to eq(200);
+      data = JSON.parse(response.body)
+      player2 = Player.find_by(name: "George")
+      expect(data['playerName']).to eq("George")
+      expect(data['gameId']).to eq(@game.id)
+      expect(data['playerId']).to eq(player2.id)
+      expect(data['gameStatus']).to eq("Game Started")
+      #Make sure game only has 2 players
+      expect(@game.players.length).to eq(2)
+  end
 end
