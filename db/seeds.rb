@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
   image_url = "localhost:3000/card_images"
-else if ENV[HEROKU_STAGING]
+elsif ENV[HEROKU_STAGING]
   image_url = "https://tsdbcg.herokuapp.com/card_images"
-else if Rails.env.production?
+elsif Rails.env.production?
   image_url = "https://tsdbcg.herokuapp.com/card_images"
-else if Rails.env.test?
+elsif Rails.env.test?
   image_url = "localhost:3000/card_images"
 end
 
