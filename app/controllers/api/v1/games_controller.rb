@@ -20,15 +20,21 @@ class Api::V1::GamesController < ApplicationController
 
   def join
     game = Game.find(params['gameId'])
+    render json: {error: "Game is full"} if game.players.length == 4
     new_player = game.players.create(name: params['playerName'])
-    game.start
     join_info = {
       gameId: game.id,
       playerId: new_player.id,
       playerName: new_player.name,
-      gameStatus: "Game Started"
     }
     render json: join_info
+  end
+
+  def start
+    game = Game.find(params['gameId'])
+    game.start
+    serialized_game = GameSerializer.new(game)
+    render json: serialized_game.state
   end
 
   private
