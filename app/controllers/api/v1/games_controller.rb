@@ -18,6 +18,7 @@ class Api::V1::GamesController < ApplicationController
     game.turn += 1
     game.save
     player.reorder_discard(params['discard'])
+    render json: {"Message": "Player #{player.name} turn ended"}, status: 200
   end
 
   def join
