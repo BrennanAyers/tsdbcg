@@ -6,15 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
-<<<<<<< Updated upstream
-  image_url = "localhost:3000/card_images"
-elsif ENV[HEROKU_STAGING]
-  image_url = "https://tsdbcg.herokuapp.com/card_images"
-=======
   image_url = "http://127.0.0.1:3000/card_images/"
 elsif ENV['HEROKU_STAGING']
   image_url = "https://tsdbcg.herokuapp.com/card_images/"
->>>>>>> Stashed changes
 elsif Rails.env.production?
   image_url = "https://tsdbcg.herokuapp.com/card_images/"
 elsif Rails.env.test?
