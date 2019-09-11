@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
-  image_url = "localhost:3000/card_images"
+  image_url = "http://127.0.0.1:3000/card_images/"
 elsif ENV['HEROKU_STAGING']
-  image_url = "https://tsdbcg.herokuapp.com/card_images"
+  image_url = "https://tsdbcg.herokuapp.com/card_images/"
 elsif Rails.env.production?
-  image_url = "https://tsdbcg.herokuapp.com/card_images"
+  image_url = "https://tsdbcg.herokuapp.com/card_images/"
 elsif Rails.env.test?
-  image_url = "localhost:3000/card_images"
+  image_url = "http://127.0.0.1:3000/card_images/"
 end
 
 Card.create(name: "Copper", category: "Money", cost: 0, spending_power: 1, tags: "", desc: "", image: image_url + "Copper.jpg")
