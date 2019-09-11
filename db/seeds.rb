@@ -20,5 +20,5 @@ Card.create(name: "Mine", category: "Action", cost: 5, tags: "", desc: "Trash a 
 Card.create(name: "Remodel", category: "Action", cost: 4, tags: "", desc: "Trash a card from your hand. Gain a card costing up to 2 treasure more than the trashed card.", image: "remodel.jpg")
 Card.create(name: "Cellar", category: "Action", cost: 2, actions_provided: 1, tags: "+1 Action", desc: "Discard any number of cards. +1 Card per card discarded.", image: "cellar.jpg")
 Card.create(name: "Moat", category: "Action, Reaction", cost: 2, cards_to_draw: 2, tags: "+2 Cards", desc: "When another player plays an Attack card, you maye reveal this from your hand. If you do, you are unaffected by that attack.", image: "moat.jpg")
-Card.create(name: "Woodcutter", category: "Action", cost: 3, tags: "+1 Buy, +2 Gold", spendingPower: 2, buyingPower: 1, desc: "", image: "woodcutter.jpg")
+Card.create(name: "Woodcutter", category: "Action", cost: 3, tags: "+1 Buy, +2 Gold", spending_power: 2, buying_power: 1, desc: "", image: "woodcutter.jpg")
 Card.create(name: "Workshop", category: "Action", cost: 3, tags: "", desc: "Gain a card costing up to 4 treasure.", image: "workshop.jpg")
