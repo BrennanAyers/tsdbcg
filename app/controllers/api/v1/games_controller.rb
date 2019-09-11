@@ -23,23 +23,22 @@ class Api::V1::GamesController < ApplicationController
 
   def join
     game = Game.find(params['gameId'])
-    new_player = game.players.find_or_create_by(name: params['playerName'])
     max_players = 2
     #change above variable to allow for more players
-    game.start if game.game_cards.length == 0 && game.players.length == max_players
-    render json: {error: "Game is full"} if game.players.length > max_players
-    join_info = {
-      gameId: game.id,
-      playerId: new_player.id,
-      playerName: new_player.name,
-    }
-    render json: join_info
-  end
-
-  def start
-    game = Game.find(params['gameId'])
-    serialized_game = GameSerializer.new(game)
-    render json: serialized_game.state
+    current_player = Player.find_by(name: params['playerName'])
+    if game.players.length >= max_players && current_player.nil?
+      render json: {error: "Game is full"}, status: 406
+    else
+      new_player = game.players.create(name: params['playerName'])
+      game.start if game.game_cards.length == 0 && game.players.length == max_players
+      join_info = {
+        gameId: game.id,
+        playerId: new_player.id,
+        playerName: new_player.name,
+        gameStatus: "Game Started",
+      }
+      render json: join_info
+    end
   end
 
   private
