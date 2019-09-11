@@ -198,3 +198,89 @@ BODY: {
   "Message": "Player Tom turn ended"
 }
 ```
+
+<details>
+<summary><b>How To Play</b></summary>
+<br>
+<details>
+<summary><b>Introduction</b></summary>
+<br>
+You are a monarch, like your parents before you - a ruler of a small pleasant kingdom of rivers and evergreens. Unlike your parents, however, you have hopes...dreams! You want a bigger and more pleasant kingdom, with more rivers, and a wider variety of trees. You want a Dominion! In all directions lie fiefs, freeholds, and feodums - all small bits of land, controlled by petty lords and verging on anarchy. You will bring civilization to these unfortunates, uniting them under your banner.
+<br><br>
+But wait. It must be something in the air; several other monarchs have had the exact same idea. You must race to get as much of the unclaimed land as possible while you can, fending them off along the way. To do this you will hire minions, construct buildings, spruce up your castle, and fill the coffers of your treasury. Your parents wouldn't be proud, but your grandparents, on your mother's side, would be delighted.
+<br><br>
+This is a game of building a deck of cards. The deck represents your Dominion. It contains your resources, victory points, and the things you can do. It starts out a small sad collection of Estates and Coppers, but you hope that by the end of the game it will be brimming with Gold, Provinces, and the inhabitants and structures of your castle and kingdom. You win by having the most Victory Points in your deck when the game ends.
+</details>
+<details>
+<summary><b>Overview</b></summary>
+<br>
+Dominion is a game of building a deck of cards. Each player has their own deck, their own discard pile, their own hand of cards and play area. Players start with a weak initial deck and gradually acquire better cards over the course of the game.
+<br><br>
+Players take turns. Each turn has three phases: Action, then Buy, then Clean-up, which you can remember as ABC. In the Action phase, you can play one Action card from your hand; in the Buy phase, you can play any number of Treasure cards and then buy one card to add to your deck; and in Clean-up you sweep up all of your cards from play and from your hand and discard them, then draw a new hand of 5 cards, shuffling as needed.
+<br><br>
+The game ends after 3 kingdom piles are empty or the Province pile is empty.
+</details>
+<details>
+<summary><b>Action Phase</b></summary>
+<br>
+In your Action phase, you can play one Action card from your hand. Those are cards that say "Action" on the bottom, and by default have a white banner (some are other colors due to additional types). Playing an Action card has three steps: announcing it; moving it to the "in play" area - the table space in front of you; and following the instructions on it, in order, top to bottom. If the card has a dividing line (e.g. Moat), you stop there; instructions below the line happen at some other time (indicated). If you cannot do everything a card tells you to do, you do as much as you can; you can still play a card even if you know you will not be able to do everything it tells you to.
+<br><br>
+Some cards give "+1 Action." This increases how many Action cards you can play in a turn. The increase happens right then, but you do not play the next Action card until completely finishing the first one. Some cards give "+2 Actions"; that means you can play two more Action cards that turn.
+So, for example, if you play Militia, which does not give +Actions, you resolve Militia and are done with your Action phase. But you could instead play a Market, then another Market, then a Militia; each Market gives you +1 Action, which lets you keep playing Actions.
+<br><br>
+Using up your Actions is optional; you can have an Action card left in hand that you can play, and decide not to play it.
+</details>
+<details>
+<summary><b>Buy Phase</b></summary>
+<br>
+First you can play any number of Treasure cards from your hand, in any order. Treasure cards say "Treasure" on the bottom and have a yellow banner. You play one by moving it to the "in play" area; you probably will not announce your Treasures, though you can if you want. The Treasures have no text, just a big coin with a number on it. You get that many coins to spend this turn - one coin for a Copper, two for a Silver, three for a Gold, indicated on the card. You do not have to play every Treasure in your hand (but only get this turn for the Treasures you play).
+<br><br>
+Then, you can buy one card, costing as many coins as you have or less. Costs are indicated in the lower left corner of cards. You buy a card by choosing it from the Supply, and then "gaining" it. "Gaining" a card means moving it from the Supply to your discard pile. Your total amount of coins available to spend goes down by the cost of the card. For example if you played four Coppers and a Silver, that makes 6 coins total; if you bought a Market, that costs 5 coins, so you would move a Market from the Supply to your discard pile and have 1 coin left.
+<br><br>
+Buying cards does not use up Treasure cards; you still have the cards. The Treasures produce income usable every time you draw them. Buying cards just uses up the coins you have available this turn.
+Some cards give "+1 Buy." This increases how many cards you can buy in a turn in your Buy phase. For example with 6 coins and an extra Buy, you could buy two Silvers, which each cost 3 coins. Using up your Buys is optional. You can have two Buys but just buy one card, or skip buying entirely. As Copper costs   0 coins, you could use a Buy with no coins to buy a Copper.
+<br><br>
+You cannot go back and play more Treasures after buying a card; first play Treasures, then buy.
+</details>
+<details>
+<summary><b>Clean-up Phase</b></summary>
+<br>
+Take all of the cards you have in play (both Actions and Treasures), and any remaining cards in your hand, and put them all into your discard pile. The order does not matter; you can hide the cards from your hand under the played cards if you want to.
+<br><br>
+Draw a new hand of 5 cards. If your deck has fewer than 5 cards, first shuffle your discard pile and put it under your deck, then draw.
+<br><br>
+Play passes to the player to your left. Any unused +Actions, unused +Buys, or unspent coins that you had left are gone; you start each turn fresh.
+</details>
+<details>
+<summary><b>Game End</b></summary>
+<br>
+The game ends at the end of a turn, if either the Province pile is empty, or any three or more Supply piles are empty (any piles at all, including Kingdom cards, Copper, etc.).
+<br><br>
+Take all of your cards - from your hand, deck, discard pile, play area, and even set aside cards - and sort them for putting them back in their piles. Count up your Victory Points.
+<br><br>
+The player with the most Victory Points wins. If players tie for Victory Points, a player who tied but had fewer turns wins. If players tie and had the same number of turns, they rejoice in their shared victory.
+</details>
+<details>
+<summary><b>Card Reference</b></summary>
+<br>
+<b>Cellar:</b> Choose any number of cards from your hand; discard them all at once; then draw as many cards as you actually discarded. If this causes you to shuffle, you will shuffle in the cards you discarded. You do not have to let players see any but the top card discarded; however the number of cards you discard is public.
+<br><br>
+<b>Market:</b> You draw a card and get +1 Action, +1 Coin, and +1 Buy.
+<br><br>
+<b>Militia:</b> Players with 3 or fewer cards in hand do not discard any cards. Players with more cards discard until they only have 3.
+<br><br>
+<b>Mine:</b> You can, for example, trash a Copper to gain a Silver, or trash a Silver to gain a Gold. The Treasure you gain comes from the Supply and is put into your hand; you can play it for coins the same turn. If you do not have a Treasure to trash, you do not gain one.
+<br><br>
+<b>Moat:</b> An Attack card says "Attack" on the bottom line; in this set Militia are Attacks. When another player plays an Attack card, you may reveal a Moat from your hand, before the Attack does anything, to be unaffected by the Attack - you do not discard for Militia. Moat stays in your hand, and can still be played on your next turn. Moat does not stop anything an Attack does to other players, or for the player who played it; it just protects you personally. Moat can also be played on your turn for +2 Cards. If multiple Attacks are played on a turn or in a round of turns, you may reveal Moat for as many of them as you want.
+<br><br>
+<b>Remodel:</b> You cannot trash the Remodel itself, since it is not in your hand after you play it. If you do not have a card to trash, you do not gain one. If you do gain a card, it comes from the Supply and is put into your discard pile. The gained card does not need to cost exactly 2 coins more than the trashed card; it can cost that much or less, and can even be another copy of the trashed card. You cannot use coins to increase how expensive of a card you gain.
+<br><br>
+<b>Smithy:</b> You draw 3 cards.
+<br><br>
+<b>Village:</b> You draw a card and get +2 Actions.
+<br><br>
+<b>Woodcutter:</b> You get +2 Coins, and +1 Buy.
+<br><br>
+<b>Workshop:</b> The card you gain comes from the Supply and is put into your discard pile. You cannot use coins to increase how expensive of a card you gain; it always costs from 0 coins to 4 coins.
+</details>
+</details>
