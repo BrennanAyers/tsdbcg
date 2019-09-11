@@ -11,11 +11,14 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def update
-    game_id = (params["gameId"])
+    game = (Game.find(params["gameId"]))
     player = Player.find(params["playerId"])
-    GameCard.where(id: params['bought'], game_id: game_id).update(player_id: player.id)
+    GameCard.where(id: params['bought'], game_id: game.id).update(player_id: player.id)
     player.reorder_deck(params['deck'])
+    game.turn += 1
+    game.save
     player.reorder_discard(params['discard'])
+    render json: {"Message": "Player #{player.name} turn ended"}, status: 200
   end
 
   def join
