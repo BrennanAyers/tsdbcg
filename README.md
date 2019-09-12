@@ -273,6 +273,20 @@ BODY: {
 - The Accession Server uses SimpleCov to track test coverage on our code. The `coverage` folder that SimpleCov generates is in `.gitignore`, but you should still be able to check coverage by opening the `index.html` files after running the test suite. Code coverage is currently at 100%, so any further contributions should follow this lead.
 - To run all of our specs using RSpec, in the terminal: `rspec` or `bundle exec rspec`
 
+## Contributors
+Accession was a collaboration between students in the Backend and Frontend programs at the [Turing School of Software and Design](http://turing.io) in Denver, Colorado. Everything was planned, programmed, and deployed in 13 days as our last project before graduation. Contributors are as follows:
+#### Backend
+- [Brennan Ayers](https://github.com/BrennanAyers)
+- [Patrick Duvall](https://github.com/Patrick-Duvall)
+- [Chris Davis](https://github.com/DavisC0801)
+#### Frontend
+- [Kevin Krato](https://github.com/KevinKra)
+- [Vinton T'eo](https://github.com/vjt960)
+#### Learning Goals
+- Apply Backend and Frontend teams into one application
+- Use professional workflow techniques (Agile, CI/CD) to create quality code
+- Push ourselves outside of our comfort zone by creating a synchronous game with web technologies
+
 ## Game Rules
 <details>
 <summary><b>How To Play</b></summary>
