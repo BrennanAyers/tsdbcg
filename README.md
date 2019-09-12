@@ -89,9 +89,9 @@ rails server
 ```
 This will begin the server on your `localhost:`, generally on Port 3000.
 
-# Endpoints
+## Endpoints
 
-## POST `api/v1/games`
+### POST `api/v1/games`
 - A POST request used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
 - Example Request:
 ```json
@@ -112,7 +112,7 @@ BODY: {
 }
 ```
 
-## POST `api/v1/join_game`
+### POST `api/v1/join_game`
 - A POST request with a Body containing a Player name, and the Game ID of the Game the Player would like to join. Upon all Players required joining a Game, all GameCards for both the board, and all Players will be created and assigned to their respective areas.
 Example Request:
 ```json
@@ -133,7 +133,7 @@ BODY: {
 }
 ```
 
-## GET `api/v1/game_state/GAME_ID`
+### GET `api/v1/game_state/GAME_ID`
 - A GET request used to query the current Game state. This endpoint returns all publicly available information, such as all Action Cards, purchasable Money and Victory Cards, the Player turn order, Players current hand sizes, current most recent discarded Card, and all information to render the cards themselves.
 - Example Request:
 ```json
@@ -194,7 +194,7 @@ BODY: {
 }
 ```
 
-## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
+### GET `api/v1/games/GAME_ID/players/PLAYER_ID`
 - A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
 - Example Request:
 ```json
@@ -240,7 +240,7 @@ BODY: {
 }
 ```
 
-## POST `api/v1/endturn`
+### POST `api/v1/endturn`
 - A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile. On a successful request, the Game turn counter will be advanced, moving from the current Player to the next in the queue.
 - Example Request:
 ```json
@@ -261,11 +261,12 @@ BODY: {
 }
 ```
 
-# Testing
+## Testing
 - Because TSDBCG is built using Rails, the project is set up for testing using the RSpec framework with its robust Rails integration. All tests written are setup inside the spec, there are no required seeds or files to run our test suite.
 - TSDBCG uses SimpleCov to track test coverage on our code. The `coverage` folder that SimpleCov generates is in `.gitignore`, but you should still be able to check coverage by opening the `index.html` files after running the test suite. Code coverage is currently at 100%, so any further contributions should follow this lead.
 - To run all of our specs using RSpec, in the terminal: `rspec` or `bundle exec rspec`
 
+## Game Rules
 <details>
 <summary><b>How To Play</b></summary>
 <br>
