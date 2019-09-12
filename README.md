@@ -274,16 +274,16 @@ BODY: {
 <details>
 <summary><b>Introduction</b></summary>
 <br>
-You are a monarch, like your parents before you - a ruler of a small pleasant kingdom of rivers and evergreens. Unlike your parents, however, you have hopes...dreams! You want a bigger and more pleasant kingdom, with more rivers, and a wider variety of trees. You want a Dominion! In all directions lie fiefs, freeholds, and feodums - all small bits of land, controlled by petty lords and verging on anarchy. You will bring civilization to these unfortunates, uniting them under your banner.
+You are a monarch, like your parents before you - a ruler of a small pleasant kingdom of rivers and evergreens. Unlike your parents, however, you have hopes...dreams! You want a bigger and more pleasant kingdom, with more rivers, and a wider variety of trees. You want a Accession! In all directions lie fiefs, freeholds, and feodums - all small bits of land, controlled by petty lords and verging on anarchy. You will bring civilization to these unfortunates, uniting them under your banner.
 <br><br>
 But wait. It must be something in the air; several other monarchs have had the exact same idea. You must race to get as much of the unclaimed land as possible while you can, fending them off along the way. To do this you will hire minions, construct buildings, spruce up your castle, and fill the coffers of your treasury. Your parents wouldn't be proud, but your grandparents, on your mother's side, would be delighted.
 <br><br>
-This is a game of building a deck of cards. The deck represents your Dominion. It contains your resources, victory points, and the things you can do. It starts out a small sad collection of Estates and Coppers, but you hope that by the end of the game it will be brimming with Gold, Provinces, and the inhabitants and structures of your castle and kingdom. You win by having the most Victory Points in your deck when the game ends.
+This is a game of building a deck of cards. The deck represents your Accession. It contains your resources, victory points, and the things you can do. It starts out a small sad collection of Estates and Coppers, but you hope that by the end of the game it will be brimming with Gold, Provinces, and the inhabitants and structures of your castle and kingdom. You win by having the most Victory Points in your deck when the game ends.
 </details>
 <details>
 <summary><b>Overview</b></summary>
 <br>
-Dominion is a game of building a deck of cards. Each player has their own deck, their own discard pile, their own hand of cards and play area. Players start with a weak initial deck and gradually acquire better cards over the course of the game.
+Accession is a game of building a deck of cards. Each player has their own deck, their own discard pile, their own hand of cards and play area. Players start with a weak initial deck and gradually acquire better cards over the course of the game.
 <br><br>
 Players take turns. Each turn has three phases: Action, then Buy, then Clean-up, which you can remember as ABC. In the Action phase, you can play one Action card from your hand; in the Buy phase, you can play any number of Treasure cards and then buy one card to add to your deck; and in Clean-up you sweep up all of your cards from play and from your hand and discard them, then draw a new hand of 5 cards, shuffling as needed.
 <br><br>
@@ -351,5 +351,8 @@ The player with the most Victory Points wins. If players tie for Victory Points,
 <b>Woodcutter:</b> You get +2 Coins, and +1 Buy.
 <br><br>
 <b>Workshop:</b> The card you gain comes from the Supply and is put into your discard pile. You cannot use coins to increase how expensive of a card you gain; it always costs from 0 coins to 4 coins.
+</details>
+<details><summary><b>Rules Credits</b></summary>
+Thank you to Donald X. Vaccarino and Rio Grande Games for making a the original Dominion game!
 </details>
 </details>
