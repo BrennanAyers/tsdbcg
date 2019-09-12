@@ -373,6 +373,6 @@ The player with the most Victory Points wins. If players tie for Victory Points,
 <b>Workshop:</b> The card you gain comes from the Supply and is put into your discard pile. You cannot use coins to increase how expensive of a card you gain; it always costs from 0 coins to 4 coins.
 </details>
 <details><summary><b>Rules Credits</b></summary>
-Thank you to Donald X. Vaccarino and Rio Grande Games for making a the original Dominion game!
+Thank you to Donald X. Vaccarino and Rio Grande Games for making the original Dominion game!
 </details>
 </details>
