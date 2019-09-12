@@ -7,7 +7,7 @@ This is the server side component to the deck building card game of Accession. T
 - Deck building card games start with each player having the same collection of cards, who then buy cards from a central pool and build a deck to gain victory points and win the game. Accession is a base implementation of this style of game, with plans for expansion in the future. The full set of rules can be found at the bottom of this documentation.
 
 ## Hosted Version
-A live version of this application can be accessed via https://accession-game.herokuapp.com/ using our endpoints below! If you would like to run your own local version, follow the instructions that follow.
+A live version of this application can be accessed via https://accession-game-server.herokuapp.com/ using our endpoints below! If you would like to run your own local version, follow the instructions that follow.
 
 ## Setup
 ### Requirements
