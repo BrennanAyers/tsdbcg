@@ -87,7 +87,7 @@ Now that our application files are sorted, and the database has pertinent inform
 ```bash
 rails server
 ```
-This will begin the server on your `localhost:`, generally on Port 3000.
+This will begin the server on your `localhost:`, generally on Port 3000. Now that that you have the game server up and running, you can interact with it through the Endpoints below, or install our UI application from [here](https://github.com/KevinKra/Dominion_fe)!
 
 ## Endpoints
 
