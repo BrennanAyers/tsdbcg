@@ -1,6 +1,13 @@
-# tsdbcg
+# Accession Server
+### A deck building card game backend using Ruby on Rails to handle game state for the React frontend pair application.
 [![Build Status](https://travis-ci.com/BrennanAyers/tsdbcg.svg?branch=master)](https://travis-ci.com/BrennanAyers/tsdbcg)
 
+## About
+This is the server side component to the deck building card game of Accession. This application is one half of the Accession game, and is required to generate games and manage game state. The general principles of Accession are...
+- Deck building card games start with each player having the same collection of cards, who then buy cards from a central pool and build a deck to gain victory points and win the game. Accession is a base implementation of this style of game, with plans for expansion in the future. The full set of rules can be found at the bottom of this documentation.
+
+## Hosted Version
+A live version of this application can be accessed via https://accession-game-server.herokuapp.com/ using our endpoints below! If you would like to run your own local version, follow the instructions that follow.
 
 ## Setup
 ### Requirements
@@ -13,7 +20,7 @@
 <details><summary><b>Brew Installation</b></summary>
 <p>
 
-[Brew](https://brew.sh/) is a package manager for Mac OS (or Linux) that allows us to install libraries using easy and convenient terminal commands. We need Brew to install later required elements of TSDBCG. To install Brew on a Mac OS machine, run in your terminal:
+[Brew](https://brew.sh/) is a package manager for Mac OS (or Linux) that allows us to install libraries using easy and convenient terminal commands. We need Brew to install later required elements of the Accession Server. To install Brew on a Mac OS machine, run in your terminal:
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
@@ -56,7 +63,7 @@ The terminal will now instruct you to input some shortcuts for rbenv in your `~/
 <details><summary><b>PostgreSQL Installation</b></summary>
 <p>
 
-[Postgres](https://en.wikipedia.org/wiki/PostgreSQL) is a relational database management system that we use to store information in TSDBCG. All of the set up will be handled by Rails once we get to that step, but Postgres does need to be installed for that to happen. We highly suggest using Brew for this part of the process, but in the situation where Brew is not available, [these](https://www.postgresql.org/docs/current/install-getsource.html) are the instructions.
+[Postgres](https://en.wikipedia.org/wiki/PostgreSQL) is a relational database management system that we use to store information in the Accession Server. All of the set up will be handled by Rails once we get to that step, but Postgres does need to be installed for that to happen. We highly suggest using Brew for this part of the process, but in the situation where Brew is not available, [these](https://www.postgresql.org/docs/current/install-getsource.html) are the instructions.
 - For a Brew installation:
 ```bash
 brew install postgresql
@@ -68,16 +75,16 @@ psql postgres
 
 - All below commands are to be run in your terminal or command line of choice.
 
-To get the TSDBCG application up and running on your local machine, start by getting the source code from this GitHub repository:
+To get the the Accession Server application up and running on your local machine, start by getting the source code from this GitHub repository:
 ```bash
 git clone git@github.com:BrennanAyers/tsdbcg.git (for SSH)
 cd tsdbcg
 ```
-TSDBCG uses the `bundler` library to manage dependencies. This process will take some time to install all of the correct versions of the libraries we use. After cloning down the repo with the above commands:
+The Accession Server uses the `bundler` library to manage dependencies. This process will take some time to install all of the correct versions of the libraries we use. After cloning down the repo with the above commands:
 ```bash
 bundler install
 ```
-After Bundler installs all required packages, run in the TSDBCG directory:
+After Bundler installs all required packages, run in the the Accession Server directory:
 ```bash
 rails db:create
 rails db:migrate
@@ -87,11 +94,11 @@ Now that our application files are sorted, and the database has pertinent inform
 ```bash
 rails server
 ```
-This will begin the server on your `localhost:`, generally on Port 3000.
+This will begin the server on your `localhost:`, generally on Port 3000. Now that that you have the game server up and running, you can interact with it through the Endpoints below, or install our UI application from [here](https://github.com/KevinKra/Dominion_fe)!
 
-# Endpoints
+## Endpoints
 
-## POST `api/v1/games`
+### POST `api/v1/games`
 - A POST request used to start a new Game with a single Player. The Game does not start, as it does not have the required number of Players, but others will now be able to join using the Game ID.
 - Example Request:
 ```json
@@ -112,7 +119,7 @@ BODY: {
 }
 ```
 
-## POST `api/v1/join_game`
+### POST `api/v1/join_game`
 - A POST request with a Body containing a Player name, and the Game ID of the Game the Player would like to join. Upon all Players required joining a Game, all GameCards for both the board, and all Players will be created and assigned to their respective areas.
 Example Request:
 ```json
@@ -133,7 +140,7 @@ BODY: {
 }
 ```
 
-## GET `api/v1/game_state/GAME_ID`
+### GET `api/v1/game_state/GAME_ID`
 - A GET request used to query the current Game state. This endpoint returns all publicly available information, such as all Action Cards, purchasable Money and Victory Cards, the Player turn order, Players current hand sizes, current most recent discarded Card, and all information to render the cards themselves.
 - Example Request:
 ```json
@@ -194,7 +201,7 @@ BODY: {
 }
 ```
 
-## GET `api/v1/games/GAME_ID/players/PLAYER_ID`
+### GET `api/v1/games/GAME_ID/players/PLAYER_ID`
 - A GET request to obtain the status of a given Player, in a given Game. This is used to render the given Players Deck and Discard piles, and draw cards from the Deck.
 - Example Request:
 ```json
@@ -240,7 +247,7 @@ BODY: {
 }
 ```
 
-## POST `api/v1/endturn`
+### POST `api/v1/endturn`
 - A POST request to indicate the end of a specific Players turn, and send all pertinent information to be updated. This includes their Deck Cards, their Discard Cards, and any Cards they bought during the course of their turn. Deck and Discard Cards are sent as an Array of Card ID's, indicating the order of Cards to be drawn next turn, and in which order they should appear in the Discard pile. On a successful request, the Game turn counter will be advanced, moving from the current Player to the next in the queue.
 - Example Request:
 ```json
@@ -261,27 +268,42 @@ BODY: {
 }
 ```
 
-# Testing
-- Because TSDBCG is built using Rails, the project is set up for testing using the RSpec framework with its robust Rails integration. All tests written are setup inside the spec, there are no required seeds or files to run our test suite.
-- TSDBCG uses SimpleCov to track test coverage on our code. The `coverage` folder that SimpleCov generates is in `.gitignore`, but you should still be able to check coverage by opening the `index.html` files after running the test suite. Code coverage is currently at 100%, so any further contributions should follow this lead.
+## Testing
+- Because the Accession Server is built using Rails, the project is set up for testing using the RSpec framework with its robust Rails integration. All tests written are setup inside the spec, there are no required seeds or files to run our test suite.
+- The Accession Server uses SimpleCov to track test coverage on our code. The `coverage` folder that SimpleCov generates is in `.gitignore`, but you should still be able to check coverage by opening the `index.html` files after running the test suite. Code coverage is currently at 100%, so any further contributions should follow this lead.
 - To run all of our specs using RSpec, in the terminal: `rspec` or `bundle exec rspec`
 
+## Contributors
+Accession was a collaboration between students in the Backend and Frontend programs at the [Turing School of Software and Design](http://turing.io) in Denver, Colorado. Everything was planned, programmed, and deployed in 13 days as our last project before graduation. Contributors are as follows:
+#### Backend
+- [Brennan Ayers](https://github.com/BrennanAyers)
+- [Patrick Duvall](https://github.com/Patrick-Duvall)
+- [Chris Davis](https://github.com/DavisC0801)
+#### Frontend
+- [Kevin Krato](https://github.com/KevinKra)
+- [Vinton T'eo](https://github.com/vjt960)
+#### Learning Goals
+- Apply Backend and Frontend teams into one application
+- Use professional workflow techniques (Agile, CI/CD) to create quality code
+- Push ourselves outside of our comfort zone by creating a synchronous game with web technologies
+
+## Game Rules
 <details>
 <summary><b>How To Play</b></summary>
 <br>
 <details>
 <summary><b>Introduction</b></summary>
 <br>
-You are a monarch, like your parents before you - a ruler of a small pleasant kingdom of rivers and evergreens. Unlike your parents, however, you have hopes...dreams! You want a bigger and more pleasant kingdom, with more rivers, and a wider variety of trees. You want a Dominion! In all directions lie fiefs, freeholds, and feodums - all small bits of land, controlled by petty lords and verging on anarchy. You will bring civilization to these unfortunates, uniting them under your banner.
+You are a monarch, like your parents before you - a ruler of a small pleasant kingdom of rivers and evergreens. Unlike your parents, however, you have hopes...dreams! You want a bigger and more pleasant kingdom, with more rivers, and a wider variety of trees. You want a Accession! In all directions lie fiefs, freeholds, and feodums - all small bits of land, controlled by petty lords and verging on anarchy. You will bring civilization to these unfortunates, uniting them under your banner.
 <br><br>
 But wait. It must be something in the air; several other monarchs have had the exact same idea. You must race to get as much of the unclaimed land as possible while you can, fending them off along the way. To do this you will hire minions, construct buildings, spruce up your castle, and fill the coffers of your treasury. Your parents wouldn't be proud, but your grandparents, on your mother's side, would be delighted.
 <br><br>
-This is a game of building a deck of cards. The deck represents your Dominion. It contains your resources, victory points, and the things you can do. It starts out a small sad collection of Estates and Coppers, but you hope that by the end of the game it will be brimming with Gold, Provinces, and the inhabitants and structures of your castle and kingdom. You win by having the most Victory Points in your deck when the game ends.
+This is a game of building a deck of cards. The deck represents your Accession. It contains your resources, victory points, and the things you can do. It starts out a small sad collection of Estates and Coppers, but you hope that by the end of the game it will be brimming with Gold, Provinces, and the inhabitants and structures of your castle and kingdom. You win by having the most Victory Points in your deck when the game ends.
 </details>
 <details>
 <summary><b>Overview</b></summary>
 <br>
-Dominion is a game of building a deck of cards. Each player has their own deck, their own discard pile, their own hand of cards and play area. Players start with a weak initial deck and gradually acquire better cards over the course of the game.
+Accession is a game of building a deck of cards. Each player has their own deck, their own discard pile, their own hand of cards and play area. Players start with a weak initial deck and gradually acquire better cards over the course of the game.
 <br><br>
 Players take turns. Each turn has three phases: Action, then Buy, then Clean-up, which you can remember as ABC. In the Action phase, you can play one Action card from your hand; in the Buy phase, you can play any number of Treasure cards and then buy one card to add to your deck; and in Clean-up you sweep up all of your cards from play and from your hand and discard them, then draw a new hand of 5 cards, shuffling as needed.
 <br><br>
@@ -349,5 +371,8 @@ The player with the most Victory Points wins. If players tie for Victory Points,
 <b>Woodcutter:</b> You get +2 Coins, and +1 Buy.
 <br><br>
 <b>Workshop:</b> The card you gain comes from the Supply and is put into your discard pile. You cannot use coins to increase how expensive of a card you gain; it always costs from 0 coins to 4 coins.
+</details>
+<details><summary><b>Rules Credits</b></summary>
+Thank you to Donald X. Vaccarino and Rio Grande Games for making the original Dominion game!
 </details>
 </details>
