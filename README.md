@@ -6,6 +6,9 @@
 This is the server side component to the deck building card game of Accession. This application is one half of the Accession game, and is required to generate games and manage game state. The general principles of Accession are...
 - Deck building card games start with each player having the same collection of cards, who then buy cards from a central pool and build a deck to gain victory points and win the game. Accession is a base implementation of this style of game, with plans for expansion in the future. The full set of rules can be found at the bottom of this documentation.
 
+## Hosted Version
+A live version of this application can be accessed via https://accession-game.herokuapp.com/ using our endpoints below! If you would like to run your own local version, follow the instructions that follow.
+
 ## Setup
 ### Requirements
 - Brew Package Manager
