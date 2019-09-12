@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get '/' => 'welcome#index'
   namespace :api do
     namespace :v1 do
       get 'game_state/:id', to: 'game_state#index'
