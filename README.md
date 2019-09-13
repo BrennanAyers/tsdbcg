@@ -281,7 +281,7 @@ Accession was a collaboration between students in the Backend and Frontend progr
 - [Chris Davis](https://github.com/DavisC0801)
 #### Frontend
 - [Kevin Krato](https://github.com/KevinKra)
-- [Vinton T'eo](https://github.com/vjt960)
+- [Vinton Te'o](https://github.com/vjt960)
 #### Learning Goals
 - Apply Backend and Frontend teams into one application
 - Use professional workflow techniques (Agile, CI/CD) to create quality code
