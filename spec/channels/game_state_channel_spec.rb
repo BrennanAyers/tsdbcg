@@ -14,4 +14,9 @@ describe GameStateChannel, type: :channel do
     expect(subscription).to be_confirmed
     expect(subscription).to have_stream_for(game)
   end
+
+  it 'broadcasts player info when one player subscribes' do
+    expect{ subscribe }.to have_broadcasted_to(game)
+      .from_channel(GameStateChannel)
+  end
 end
