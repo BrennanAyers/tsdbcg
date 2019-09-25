@@ -7,4 +7,8 @@ describe ApplicationCable::Connection, type: :channel do
     connect('/cable', params: { player_id: player.id })
     expect(connection.current_player).to eq(player)
   end
+
+  it 'rejects connections' do
+    expect { connect '/cable' }.to have_rejected_connection
+  end
 end
