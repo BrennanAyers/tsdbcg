@@ -3,7 +3,13 @@ class GameStateChannel < ApplicationCable::Channel
     ensure_confirmation_sent
     stream_for current_player.game
 
-    payload = { message: 'Player Joined' }
+    payload = {
+      type: 'player-joined',
+      data: {
+        id: current_player.id,
+        name: current_player.name
+      }
+    }
     broadcast_message payload
   end
 
