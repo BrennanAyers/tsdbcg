@@ -268,6 +268,20 @@ BODY: {
 }
 ```
 
+## Websockets
+
+### Game State Channel
+- The Game State Channel is the ActionCable websocket that provides up the second information about the current Game State for each Player. This is a work in progress, with only the Player Subscription functionality built out currently.
+```
+connect to '/cable' with parameters of { player_id: 1 }
+```
+- Without a Player ID, the connection will be rejected.
+- On a Player joining, the Channel will return the following information:
+- - Message Type: `player-joined`
+- - Player ID
+- - Player Name
+- The output will be identical to the above `game_state` endpoint, to allow for limited refactoring.
+
 ## Testing
 - Because the Accession Server is built using Rails, the project is set up for testing using the RSpec framework with its robust Rails integration. All tests written are setup inside the spec, there are no required seeds or files to run our test suite.
 - The Accession Server uses SimpleCov to track test coverage on our code. The `coverage` folder that SimpleCov generates is in `.gitignore`, but you should still be able to check coverage by opening the `index.html` files after running the test suite. Code coverage is currently at 100%, so any further contributions should follow this lead.
