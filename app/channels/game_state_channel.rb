@@ -22,6 +22,22 @@ class GameStateChannel < ApplicationCable::Channel
       }
     }
     broadcast_message payload
+    begin_game?
+  end
+
+  def begin_game?
+    max_players = 4
+    game = current_player.game
+    if game.game_cards.length == 0 && game.players.length == max_players
+      game.start
+      # game.reload might be needed in production, but seems to be working in tests for the time being
+      serialized_game = GameSerializer.new(game)
+      payload = {
+        type: "game-started",
+        data: serialized_game.state
+      }
+      broadcast_message payload
+    end
   end
 
   def player_list_generator(game)
