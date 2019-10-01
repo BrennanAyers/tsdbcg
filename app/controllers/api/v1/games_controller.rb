@@ -30,7 +30,7 @@ class Api::V1::GamesController < ApplicationController
       render json: {error: "Game is full"}, status: 406
     else
       new_player = game.players.find_or_create_by(name: params['playerName'])
-      game.start if game.game_cards.length == 0 && game.players.length == max_players
+      # game.start if game.game_cards.length == 0 && game.players.length == max_players
       join_info = {
         gameId: game.id,
         playerId: new_player.id,
