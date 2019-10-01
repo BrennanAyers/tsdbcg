@@ -271,7 +271,7 @@ BODY: {
 ## Websockets
 
 ### Game State Channel
-- The Game State Channel is the ActionCable websocket that provides up the second information about the current Game State for each Player. This is a work in progress, with only the Player Subscription functionality built out currently.
+- The Game State Channel is the ActionCable websocket that provides up to the second information about the current Game State for each Player. This is a work in progress, with only the Player Subscription functionality built out currently.
 ```
 connect to '/cable' with parameters of { player_id: 1 }
 ```
@@ -280,6 +280,7 @@ connect to '/cable' with parameters of { player_id: 1 }
 - - Message Type: `player-joined`
 - - Player ID
 - - Player Name
+- - List of Players already in the Game with their IDs and Names
 - The output will be identical to the above `game_state` endpoint, to allow for limited refactoring.
 
 ## Testing
