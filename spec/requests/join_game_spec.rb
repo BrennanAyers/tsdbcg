@@ -43,9 +43,10 @@ describe 'Join game API' do
       expect(data['playerId']).to eq(player2.id)
       expect(data['gameStatus']).to eq("Game Started")
       #Make sure game started
-      @player.reload
-      expect(@player.cards.count).to eq(10)
-      expect(player2.cards.count).to eq(10)
+      # These expectations are being removed in the process of transfering Game Start logic over to the GameStateChannel
+      # @player.reload
+      # expect(@player.cards.count).to eq(10)
+      # expect(player2.cards.count).to eq(10)
   end
 
   it "rejects connections if more then max players join" do
