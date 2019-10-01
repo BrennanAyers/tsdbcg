@@ -49,7 +49,7 @@ describe 'Join game API' do
       # expect(player2.cards.count).to eq(10)
   end
 
-  it "rejects connections if more then max players join" do
+  xit "rejects connections if more then max players join" do
     headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'

@@ -23,7 +23,7 @@ class Api::V1::GamesController < ApplicationController
 
   def join
     game = Game.find(params['gameId'])
-    max_players = 2
+    max_players = 4
     #change above variable to allow for more players
     current_player = Player.find_by(name: params['playerName'])
     if game.players.length >= max_players && current_player.nil?
