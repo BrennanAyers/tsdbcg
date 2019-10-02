@@ -281,7 +281,18 @@ connect to '/cable' with parameters of { player_id: 1 }
 - - Player ID
 - - Player Name
 - - List of Players already in the Game with their IDs and Names
-- The output will be identical to the above `game_state` endpoint, to allow for limited refactoring.
+
+- When 4 people subscribe to a Game State Channel in Accession, the Game will will start. This functionality previously lived in the `join_game` endpoint, and also only required 2 players.
+- On the 4th Player subscribing to the Game, all Players who are subscribed will receive the following information:
+- - Message Type: `game-started`
+- - `tableDeck` information
+- - `playerOrder` information
+- - `playerInfo` information
+- - - `deckSize`
+- - - `handSize`
+- - - `topCardDiscard`
+- - `activePlayerName` information
+- - `activePlayerId` information
 
 ## Testing
 - Because the Accession Server is built using Rails, the project is set up for testing using the RSpec framework with its robust Rails integration. All tests written are setup inside the spec, there are no required seeds or files to run our test suite.
